@@ -11,6 +11,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class DemoServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(DemoServlet.class.getName());
-    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,6 +34,15 @@ public class DemoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        //response.sendRedirect("https://www.iit.edu");
+        
+        
+        //we would record INFO warning, severe (for example) in production
+        LOG.log(Level.INFO, "I am a INFO message from doGet method within DemoServlet");
+
+        //we would record basically everthing in non-production enviroments
+        LOG.log(Level.FINEST, "I am a FINEST message from doGet method within DemoServlet");
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -59,7 +70,7 @@ public class DemoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        LOG.log(Level.INFO, "I am a INFO message from doPost method within DemoServlet");
     }
 
     /**
