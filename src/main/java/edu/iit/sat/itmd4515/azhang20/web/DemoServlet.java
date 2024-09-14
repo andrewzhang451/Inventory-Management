@@ -70,7 +70,7 @@ public class DemoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        LOG.log(Level.INFO, "I am a INFO message from doPost method within DemoServlet");
+        LOG.log(Level.INFO, "I am a INFO message from doPost method within DemoServlet");   
         
         String param1 = request.getParameter("param1");
         String param2 = request.getParameter("param2");
