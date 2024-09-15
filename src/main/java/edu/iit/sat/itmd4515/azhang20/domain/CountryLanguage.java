@@ -16,11 +16,14 @@ public class CountryLanguage {
     
     @NotNull
     private String countryCode; //unique
+    
     @NotNull
     @Size(min = 2, max = 50)
     private String language;
+    
     @NotNull
     private Boolean isOfficial;
+    
     @NotNull
     @Min(0)
     private Float percentage;

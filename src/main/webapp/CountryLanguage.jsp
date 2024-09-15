@@ -14,7 +14,7 @@
     <body>
         <h1>New Country Language Form</h1>
 
-        <form method="post" action="/azhang20-fp/countrylanguage">
+        <form method="post" action="countrylanguage">
             <div>
                 <label for="countryCode">Country Code</label>
                 <input type="text" id="countryCode" name="countryCode" />
@@ -26,10 +26,10 @@
 
             <div> 
                 <label for="isOfficial">Is Language Official?</label> 
-                <select id="isOfficial" name="isOfficial" required/>
-                <option value=""disable selected>Select True or False</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
+                <select id="isOfficial" name="isOfficial" required>
+                    <option value="" disabled selected>Select True or False</option>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
                 </select>
             </div>
 
@@ -39,7 +39,7 @@
             </div>
 
             <button type="submit">Submit</button>
-
         </form>
+
     </body>
 </html>
