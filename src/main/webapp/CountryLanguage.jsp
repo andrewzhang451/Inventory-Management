@@ -38,7 +38,7 @@
                 <input type="text" id="percentage" name="percentage" />
             </div>
 
-
+            <button type="submit">Submit</button>
 
         </form>
     </body>

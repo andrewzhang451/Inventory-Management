@@ -21,14 +21,23 @@ public class CountryLanguageServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(CountryLanguageServlet.class.getName());
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.info("Inside CountryLanguageServlet.doPost()");
-    }
-
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOG.info("Inside CountryLanguageServlet.doGet()");
+        resp.sendRedirect(req.getContextPath() + "CountryLanguage.jsp");
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOG.info("Inside CountryLanguageServlet.doPost()");
+        
+        String countryCodeParam;
+        String countryLanguageParam;
+        String isLanguageOfficialParam;
+        String percentageParam;
+    }
+
+    
 
 }
