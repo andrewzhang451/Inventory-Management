@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author AndrewZ
  */
-@WebServlet(name = "", urlPatterns = {"/countrylanguage", "/cl", "countryl", "clanguage"})
+@WebServlet(name = "", urlPatterns = {"/countrylanguage", "/cl", "/countryl", "/clanguage"})
 public class CountryLanguageServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(CountryLanguageServlet.class.getName());
