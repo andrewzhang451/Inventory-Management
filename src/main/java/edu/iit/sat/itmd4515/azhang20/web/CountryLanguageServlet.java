@@ -23,12 +23,12 @@ public class CountryLanguageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.info("Inside CountryLanguageServlet.doGet()");
+        LOG.info("Inside CountryLanguageServlet.doPost()");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.info("Inside CountryLanguageServlet.doPost()");
+        LOG.info("Inside CountryLanguageServlet.doGet()");
     }
 
 }
