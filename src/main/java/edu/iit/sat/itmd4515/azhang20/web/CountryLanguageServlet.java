@@ -32,10 +32,15 @@ public class CountryLanguageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOG.info("Inside CountryLanguageServlet.doPost()");
         
-        String countryCodeParam;
-        String countryLanguageParam;
-        String isLanguageOfficialParam;
-        String percentageParam;
+        String countryCodeParam = req.getParameter("countryCode");
+        String countryLanguageParam = req.getParameter("countryLanguage");
+        String isLanguageOfficialParam = req.getParameter("isLanguageOfficial");
+        String percentageParam = req.getParameter("percentage");
+        
+        LOG.info("countryCodeParam:\t\t\t\t" + countryCodeParam);
+        LOG.info("countrylanguageParam:\t\t\t\t" + countryLanguageParam);
+        LOG.info("isLanguageOfficialParam:\t\t\t\t" + isLanguageOfficialParam);
+        LOG.info("percentageParam:\t\t\t\t" + percentageParam);
     }
 
     
