@@ -15,7 +15,7 @@ public class CountryLanguage {
     
     
     @NotNull
-    private String countryCode;
+    private String countryCode; //unique
     @NotNull
     @Size(min = 2, max = 50)
     private String language;
