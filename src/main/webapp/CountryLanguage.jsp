@@ -25,9 +25,12 @@
             </div>
 
             <div> 
-                <!-- use drop down for this -->
-                <label for="isOfficial">Is Language Official</label> 
-                <input type="text" id="isOfficial" name="isOfficial" /> 
+                <label for="isOfficial">Is Language Official?</label> 
+                <select id="isOfficial" name="isOfficial" required/>
+                <option value=""disable selected>Select True or False</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+                </select>
             </div>
 
             <div>
@@ -35,7 +38,8 @@
                 <input type="text" id="percentage" name="percentage" />
             </div>
 
-            
+
+
         </form>
     </body>
 </html>
