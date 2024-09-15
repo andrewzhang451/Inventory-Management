@@ -25,7 +25,7 @@ public class CountryLanguageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOG.info("Inside CountryLanguageServlet.doGet()");
-        resp.sendRedirect(req.getContextPath() + "CountryLanguage.jsp");
+        resp.sendRedirect(req.getContextPath() + "/CountryLanguage.jsp");
     }
     
     @Override
@@ -33,8 +33,8 @@ public class CountryLanguageServlet extends HttpServlet {
         LOG.info("Inside CountryLanguageServlet.doPost()");
         
         String countryCodeParam = req.getParameter("countryCode");
-        String countryLanguageParam = req.getParameter("countryLanguage");
-        String isLanguageOfficialParam = req.getParameter("isLanguageOfficial");
+        String countryLanguageParam = req.getParameter("language");
+        String isLanguageOfficialParam = req.getParameter("isOfficial");
         String percentageParam = req.getParameter("percentage");
         
         LOG.info("countryCodeParam:\t\t\t\t" + countryCodeParam);
