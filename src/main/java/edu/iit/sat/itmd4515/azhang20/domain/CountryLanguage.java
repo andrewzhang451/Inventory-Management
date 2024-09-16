@@ -81,7 +81,7 @@ public class CountryLanguage {
      * 
      * @return
      */
-    public Boolean isIsOfficial() {
+    public Boolean getIsOfficial() {
         return isOfficial;
     }
 

@@ -5,12 +5,17 @@
 package edu.iit.sat.itmd4515.azhang20.web;
 
 import edu.iit.sat.itmd4515.azhang20.domain.CountryLanguage;
+import jakarta.annotation.Resource;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Logger;
 
 /**
@@ -21,6 +26,9 @@ import java.util.logging.Logger;
 public class CountryLanguageServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(CountryLanguageServlet.class.getName());
+
+    @Resource
+    Validator validator;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -68,6 +76,30 @@ public class CountryLanguageServlet extends HttpServlet {
         }
         //ending with a built country language form, but not officially validated
         LOG.info("built country language form: " + countryLanguage.toString());
+
+        Set<ConstraintViolation<CountryLanguage>> violations = validator.validate(countryLanguage);
+
+        if (violations.size() > 0) {
+            //FAILED VALIDATION
+            LOG.info("Country Language form has failed validation");
+            for (ConstraintViolation<CountryLanguage> violation : violations) {
+                LOG.info(violation.getPropertyPath() + " " + violation.getMessage());
+            }
+            
+            req.setAttribute("countryLanguage", countryLanguage);
+            req.setAttribute("violations", violations);
+            
+            RequestDispatcher rd = req.getRequestDispatcher("CountryLanguage.jsp");
+            rd.forward(req, resp);
+            
+        } else {
+            //PASSED VALIDATION
+            LOG.info("Country Language form has passed validation");
+            req.setAttribute("countryLanguage", countryLanguage);
+            
+            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/conf.jsp");
+            rd.forward(req, resp);
+        }
     }
 
 }
