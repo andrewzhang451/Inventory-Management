@@ -113,9 +113,10 @@ public class CountryLanguage {
     }
 
     @Override
-    public String toString() {
-        return "CountryLanguage{" + "countryCode=" + countryCode + ", language=" + language + ", isOfficial=" + isOfficial + ", percentage=" + percentage + '}';
-    }
+public String toString() {
+    return "CountryLanguage{" + "countryCode=" + String.valueOf(countryCode) + ", language=" + String.valueOf(language) + ", isOfficial=" + String.valueOf(isOfficial) + ", percentage=" + String.valueOf(percentage) + '}';
+}
+
 
     public void setString(String usa) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

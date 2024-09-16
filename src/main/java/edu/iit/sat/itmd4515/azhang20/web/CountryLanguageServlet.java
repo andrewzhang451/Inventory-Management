@@ -42,7 +42,6 @@ public class CountryLanguageServlet extends HttpServlet {
         LOG.info("isLanguageOfficialParam: " + isLanguageOfficialParam);
         LOG.info("percentageParam: " + percentageParam);
 
-        
         //starting with an empty initialized country language
         CountryLanguage countryLanguage = new CountryLanguage();
 
@@ -65,12 +64,10 @@ public class CountryLanguageServlet extends HttpServlet {
                 LOG.warning(String.format("Invalid percentage value: %s", percentageParam));
                 countryLanguage.setPercentage(0.0f);
             }
-            
-            //ending with a built country language form, but not officially validated
-            LOG.info("built country language form: " + countryLanguage.toString());
+
         }
-        
+        //ending with a built country language form, but not officially validated
+        LOG.info("built country language form: " + countryLanguage.toString());
     }
 
 }
- 
