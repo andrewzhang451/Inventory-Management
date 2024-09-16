@@ -15,8 +15,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.DataSource;
 
 /**
  *
@@ -29,6 +34,9 @@ public class CountryLanguageServlet extends HttpServlet {
 
     @Resource
     Validator validator;
+
+    @Resource(name = "java:app/jdbc/itmd4515DS")
+    DataSource ds;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -85,20 +93,43 @@ public class CountryLanguageServlet extends HttpServlet {
             for (ConstraintViolation<CountryLanguage> violation : violations) {
                 LOG.info(violation.getPropertyPath() + " " + violation.getMessage());
             }
-            
+
             req.setAttribute("countryLanguage", countryLanguage);
             req.setAttribute("violations", violations);
-            
+
             RequestDispatcher rd = req.getRequestDispatcher("CountryLanguage.jsp");
             rd.forward(req, resp);
-            
+
         } else {
             //PASSED VALIDATION
             LOG.info("Country Language form has passed validation");
+
+            createCountryLanguage(countryLanguage);
+
             req.setAttribute("countryLanguage", countryLanguage);
-            
+
             RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/conf.jsp");
             rd.forward(req, resp);
+        }
+    }
+
+    private void createCountryLanguage(CountryLanguage countryLanguage) {
+        String insertCountryLanguage = "INSERT INTO countrylanguage (CountryCode, Language, IsOfficial, Percentage) VALUES (?, ?, ?, ?)";
+
+        try (
+                Connection c = ds.getConnection(); PreparedStatement ps = c.prepareStatement(insertCountryLanguage)) {
+            ps.setString(1, countryLanguage.getCountryCode());
+            ps.setString(2, countryLanguage.getLanguage());
+
+            // Convert boolean to 'T' or 'F' to match the database column type
+            ps.setString(3, countryLanguage.getIsOfficial() ? "T" : "F");
+
+            ps.setFloat(4, countryLanguage.getPercentage());
+
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            LOG.log(Level.SEVERE, null, ex);
         }
     }
 
