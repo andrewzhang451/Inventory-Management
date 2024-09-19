@@ -28,7 +28,7 @@
         </dependency>
         
         <dependency>
-            <groupID>org.eclipse.persistence</groupID>
+            <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
             <version>4.0.4</version>
         </dependency>

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.iit.sat.itmd4515.azhang20.web;
+package edu.iit.sat.itmd4515.azhang20.lab3;
 
-import edu.iit.sat.itmd4515.azhang20.domain.CountryLanguage;
+import edu.iit.sat.itmd4515.azhang20.lab3.CountryLanguage;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
