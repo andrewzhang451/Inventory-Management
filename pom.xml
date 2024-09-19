@@ -27,6 +27,12 @@
             <scope>compile</scope>
         </dependency>
         
+        <dependency>
+            <groupID>org.eclipse.persistence</groupID>
+            <artifactId>org.eclipse.persistence.jpa</artifactId>
+            <version>4.0.4</version>
+        </dependency>
+        
     </dependencies>
     
     <build>
