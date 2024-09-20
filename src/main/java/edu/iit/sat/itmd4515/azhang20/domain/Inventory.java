@@ -4,64 +4,111 @@
  */
 package edu.iit.sat.itmd4515.azhang20.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.util.Objects;
 
-/**
- *
- * @author AndrewZ
- */
+
 @Entity
+@Table(name = "inventory")
 public class Inventory {
     
     @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false, name = "window_name")//this makes it so that you can not have a null value and changed name as well
     private String name;
+    
+    private LocalDate productionDate;
+    
+    @Enumerated(EnumType.STRING)
+    private WindowType type;
+
 
     public Inventory() {
     }
 
-    public Inventory(Long id, String name) {
-        this.id = id;
+    public Inventory(String name, LocalDate productionDate, WindowType type) {
         this.name = name;
-    }
+        this.productionDate = productionDate;
+        this.type = type;
+    }   
 
-    
-    
-    /**
-     * Get the value of name
-     *
-     * @return the value of name
-     */
+
     public String getName() {
         return name;
     }
 
-    /**
-     * Set the value of name
-     *
-     * @param name new value of name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Get the value of id
-     *
-     * @return the value of id
-     */
     public Long getId() {
         return id;
     }
 
-    /**
-     * Set the value of id
-     *
-     * @param id new value of id
-     */
     public void setId(Long id) {
         this.id = id;
     }
+    
+    @Override
+    public String toString() {
+        return "Inventory{" + "id=" + id + ", name=" + name + ", productionDate=" + productionDate + ", type=" + type + '}';
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Inventory other = (Inventory) obj;
+        
+        //if we are using GeneratedValue(), we need one more short circuit
+        //if the id is null, return false
+        if( this.id == null || other.id == null ) {
+            return false;
+        }
+        
+        return Objects.equals(this.id, other.id);
+    }
+
+  
+    public WindowType getType() {
+        return type;
+    }
+
+    public void setType(WindowType type) {
+        this.type = type;
+    }
+
+    public LocalDate getProductionDate() {
+        return productionDate;
+    }
+
+    public void setProductionDate(LocalDate productionDate) {
+        this.productionDate = productionDate;
+    }
+
 
 }
