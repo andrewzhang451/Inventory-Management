@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -24,9 +26,11 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotBlank
     @Column(nullable = false, name = "window_name")//this makes it so that you can not have a null value and changed name as well
     private String name;
     
+    @PastOrPresent
     private LocalDate productionDate;
     
     @Enumerated(EnumType.STRING)
