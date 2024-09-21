@@ -24,3 +24,27 @@
     inventory. Together, these entities create a system that not only tracks the 
     quantity of products in stock but also manages the entire workflow from suppliers to 
     customers.
+
+Test Class: `InventoryJPATest`
+
+This test class verifies the following operations for the `Inventory` entity using JPA (Java Persistence API):
+1. Create- Verifies that an `Inventory` entity can be successfully persisted.
+2. Read- Verifies that an `Inventory` entity can be retrieved.
+3. Update- Verifies that an `Inventory` entity can be updated.
+4. Delete- Verifies that an `Inventory` entity can be deleted.
+
+Console Output:
+text:
+beforeEach with inventory:Inventory{id=1, name=TEST DATA, productionDate=2020-12-12, type=FLOAT}
+afterEach with inventory:Inventory{id=1, name=TEST DATA, productionDate=2020-12-12, type=FLOAT}
+beforeEach with inventory:Inventory{id=2, name=TEST DATA, productionDate=2020-12-12, type=FLOAT}
+afterEach with inventory:Inventory{id=2, name=TEST DATA, productionDate=2021-01-01, type=FLOAT}
+beforeEach with inventory:Inventory{id=3, name=TEST DATA, productionDate=2020-12-12, type=FLOAT}
+afterEach with inventory:Inventory{id=3, name=TEST DATA, productionDate=2020-12-12, type=FLOAT}
+beforeEach with inventory:Inventory{id=5, name=TEST DATA, productionDate=2020-12-12, type=FLOAT}
+
+Testing invalid future production date: Inventory{id=null, name=Test Window, productionDate=2030-01-01, type=FLOAT}
+Validation message: must be a date in the past or in the present
+Valid Inventory: Inventory{id=null, name=Test Window, productionDate=2020-12-12, type=FLOAT}
+Testing invalid blank name: Inventory{id=null, name=, productionDate=2020-12-12, type=INSULATED}
+Validation message: must not be blank
