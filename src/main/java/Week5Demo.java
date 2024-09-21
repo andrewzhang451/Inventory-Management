@@ -39,7 +39,7 @@ public class Week5Demo {
         EntityTransaction tx = em.getTransaction();//tx will be used to begin and finish(commit) the session
 
         tx.begin();
-        em.persist(inventory);//this tells the manager to save the object "inventory" to database
+        em.persist(inventory);//this tells the manager to save the object "inventory" to database/also meant to create a table and insert it into database
         inventory.setName("bullet-proof glass");
         tx.commit();
 
