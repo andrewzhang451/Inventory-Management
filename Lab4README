@@ -1,1 +1,26 @@
+1). For this project, I have chosen to work within the inventory management domain. 
+    This system will be designed to help businesses track and manage their stock of 
+    products or resources. The primary purpose of the system is to ensure that an 
+    organization has accurate and up-to-date information about its inventory levels,    
+    reducing the chances of stock shortages or overstocking. It will enable users to 
+    monitor product availability, track the addition of new stock, update product 
+    information, and manage different types of inventory. I chose this domain because 
+    inventory management is a crucial aspect of many businesses, and an efficient system 
+    can significantly streamline operations, improve customer satisfaction, and reduce 
+    operational costs. Additionally, the inventory management system provides a practical 
+    and real-world application of using JPA (Java Persistence API) in NetBeans, 
+    allowing me to better understand how to manage data persistence in business systems.
 
+2). Although only one entity (such as Inventory) is required for Lab 4, there are several 
+    other entities that could exist within an inventory management system. For example, 
+    an Order entity could be used to track purchases or requests for products from inventory. 
+    Similarly, a Supplier entity could be created to store information about vendors who 
+    provide stock to the company, including details like supplier contact information and 
+    delivery schedules. Additionally, a Customer entity could represent clients who are 
+    purchasing products, and this would be linked to orders. These entities would interact 
+    with one another in various ways. For example, an Order could be linked to both a 
+    Customer (who placed the order) and the specific Inventory items that are being requested. 
+    A Supplier would relate to the Inventory, as they provide the goods stocked in the 
+    inventory. Together, these entities create a system that not only tracks the 
+    quantity of products in stock but also manages the entire workflow from suppliers to 
+    customers.
