@@ -4,6 +4,10 @@
     <persistence-unit name="itmd4515testPU" transaction-type="RESOURCE_LOCAL">
         
         <class>edu.iit.sat.itmd4515.azhang20.domain.Inventory</class>
+        <class>edu.iit.sat.itmd4515.azhang20.domain.OrderManagement</class>
+        <class>edu.iit.sat.itmd4515.azhang20.domain.ProductTracking</class>
+        <class>edu.iit.sat.itmd4515.azhang20.domain.SupplyChain</class>
+        <class>edu.iit.sat.itmd4515.azhang20.domain.WarehouseManagement</class>
         
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
