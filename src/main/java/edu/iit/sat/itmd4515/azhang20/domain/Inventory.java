@@ -27,7 +27,7 @@ public class Inventory {
     private Long id;
     
     @NotBlank
-    @Column(nullable = false, name = "window_name")//this makes it so that you can not have a null value and changed name as well
+    @Column(nullable = false, name = "window_name")
     private String name;
     
     @PastOrPresent
@@ -36,15 +36,21 @@ public class Inventory {
     @Enumerated(EnumType.STRING)
     private WindowType type;
 
+    private int quantity;
+    
+    @Column(name = "price_per_unit")
+    private double pricePerUnit;
 
-    public Inventory() {
+    public Inventory(String windowFloat, LocalDate of, WindowType FLOAT) {
     }
 
-    public Inventory(String name, LocalDate productionDate, WindowType type) {
+    public Inventory(String name, LocalDate productionDate, WindowType type, int quantity, double pricePerUnit) {
         this.name = name;
         this.productionDate = productionDate;
         this.type = type;
-    }   
+        this.quantity = quantity;
+        this.pricePerUnit = pricePerUnit;
+    }    
 
 
     public String getName() {
@@ -65,7 +71,14 @@ public class Inventory {
     
     @Override
     public String toString() {
-        return "Inventory{" + "id=" + id + ", name=" + name + ", productionDate=" + productionDate + ", type=" + type + '}';
+        return "Inventory{" + 
+                "id=" + id + 
+                ", name=" + name + 
+                ", productionDate=" + productionDate + 
+                ", type=" + type + 
+                ", quantity=" + quantity + 
+                ", pricePerUnit=" + pricePerUnit + 
+                '}';
     }
     
     @Override
