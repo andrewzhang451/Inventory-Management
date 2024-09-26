@@ -20,6 +20,10 @@ public class WarehouseManagement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public WarehouseManagement() {
+    }
+    
+
     public WarehouseManagement(Long id) {
         this.id = id;
     }

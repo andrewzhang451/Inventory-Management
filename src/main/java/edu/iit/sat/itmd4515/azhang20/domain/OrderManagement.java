@@ -20,6 +20,10 @@ public class OrderManagement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public OrderManagement() {
+    }
+
+    
     public OrderManagement(Long id) {
         this.id = id;
     }

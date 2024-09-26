@@ -20,6 +20,9 @@ public class ProductTracking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public ProductTracking() {
+    }
+
     public ProductTracking(Long id) {
         this.id = id;
     }

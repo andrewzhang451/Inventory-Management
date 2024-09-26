@@ -20,6 +20,9 @@ public class SupplyChain {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public SupplyChain() {
+    }
+
     public SupplyChain(Long id) {
         this.id = id;
     }
