@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.util.Objects;
 
 /**
  *
@@ -32,13 +33,20 @@ public class OrderItem {
         this.totalPrice = totalPrice;
     }
 
+    /**
+     *OrderItem is the owning side 
+     *OrderManagement is the inverse side
+     **/
+    
+    
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     private OrderManagement order; 
 
-    @ManyToOne
+    @ManyToOne 
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
+    
     private int quantity;
     private double unitPrice;
 
@@ -87,6 +95,36 @@ public class OrderItem {
 
     public OrderItem() {
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final OrderItem other = (OrderItem) obj;
+        
+        //if we are using GeneratedValue(), we need one more short circuit
+        //if the id is null, return false
+        if( this.id == null || other.id == null ) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id);
+    }
+    
+    
 
     public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice) {
         this.order = order;

@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.Objects;
 
 /**
  *
@@ -98,6 +99,35 @@ public class Supplier {
     public Supplier() {
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Supplier other = (Supplier) obj;
+        //if we are using GeneratedValue(), we need one more short circuit
+        //if the id is null, return false
+        if( this.id == null || other.id == null ) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id);
+    }
+    
+    
+
     public Supplier(Long id) {
         this.id = id;
     }
@@ -109,5 +139,12 @@ public class Supplier {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Supplier{" + "id=" + id + ", supplierName=" + supplierName + ", contactName=" + contactName + ", contactEmail=" + contactEmail + ", contactPhone=" + contactPhone + ", address=" + address + ", city=" + city + ", postalCode=" + postalCode + '}';
+    }
+    
+    
 
 }

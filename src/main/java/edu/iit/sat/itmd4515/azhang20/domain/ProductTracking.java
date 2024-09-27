@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -68,6 +69,36 @@ public class ProductTracking {
     public ProductTracking() {
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProductTracking other = (ProductTracking) obj;
+        
+        //if we are using GeneratedValue(), we need one more short circuit
+        //if the id is null, return false
+        if( this.id == null || other.id == null ) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id);
+    }
+    
+    
+
     public ProductTracking(Long id) {
         this.id = id;
     }
@@ -79,5 +110,12 @@ public class ProductTracking {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "ProductTracking{" + "id=" + id + ", productId=" + productId + ", trackingStatus=" + trackingStatus + ", lastUpdated=" + lastUpdated + ", currentLocation=" + currentLocation + '}';
+    }
+    
+    
 
 }

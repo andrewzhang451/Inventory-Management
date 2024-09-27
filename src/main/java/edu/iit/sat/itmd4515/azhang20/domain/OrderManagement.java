@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -81,6 +82,36 @@ public class OrderManagement {
     public OrderManagement() {
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final OrderManagement other = (OrderManagement) obj;
+        
+        //if we are using GeneratedValue(), we need one more short circuit
+        //if the id is null, return false
+        if( this.id == null || other.id == null ) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id);
+    }
+    
+    
+
     public OrderManagement(Long id) {
         this.id = id;
     }
@@ -92,5 +123,14 @@ public class OrderManagement {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "OrderManagement{" + "id=" + id + ", customerId=" + customerId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", totalAmount=" + totalAmount + '}';
+    }
+
+    
+    
+    
 
 }
