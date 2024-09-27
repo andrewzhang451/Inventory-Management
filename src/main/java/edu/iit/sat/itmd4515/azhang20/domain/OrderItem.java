@@ -21,6 +21,17 @@ class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public OrderItem(Long id, OrderManagement order, Inventory inventory, int quantity, double unitPrice, double totalPrice) {
+        this.id = id;
+        this.order = order;
+        this.inventory = inventory;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.totalPrice = totalPrice;
+    }
+    
+    
     
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)

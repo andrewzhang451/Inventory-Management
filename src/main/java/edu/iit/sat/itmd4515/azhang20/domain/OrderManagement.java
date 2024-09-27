@@ -25,9 +25,15 @@ public class OrderManagement {
     private LocalDate orderDate;
     private String orderStatus;
     private Double totalAmount;
-
-    
     private List<OrderItem> orderItems; //@OneToMany
+
+    public OrderManagement(Long customerId, LocalDate orderDate, String orderStatus, Double totalAmount, List<OrderItem> orderItems) {
+        this.customerId = customerId;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
+        this.totalAmount = totalAmount;
+        this.orderItems = orderItems;
+    }
 
     public List getOrderItems() {
         return orderItems;

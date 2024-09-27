@@ -24,6 +24,16 @@ public class WarehouseManagement {
     private int capacity;
     private int currentStockLevel;
 
+    public WarehouseManagement(Long id, String warehouseName, String location, int capacity, int currentStockLevel) {
+        this.id = id;
+        this.warehouseName = warehouseName;
+        this.location = location;
+        this.capacity = capacity;
+        this.currentStockLevel = currentStockLevel;
+    }
+    
+    
+
     public int getCurrentStockLevel() {
         return currentStockLevel;
     }

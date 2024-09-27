@@ -25,6 +25,17 @@ public class Shipping {
     private LocalDate shippingDate;
     private String shippingStatus; //For example: Shipped, In Transit, Delivered
 
+    public Shipping(Long id, Long orderId, String shippingAddress, String shippingMethod, LocalDate shippingDate, String shippingStatus) {
+        this.id = id;
+        this.orderId = orderId;
+        this.shippingAddress = shippingAddress;
+        this.shippingMethod = shippingMethod;
+        this.shippingDate = shippingDate;
+        this.shippingStatus = shippingStatus;
+    }
+    
+    
+
     public String getShippingStatus() {
         return shippingStatus;
     }

@@ -24,6 +24,16 @@ public class SupplyChain {
     private LocalDate expectedDeliveryDate;
     private LocalDate actualDeliveryDate;
 
+    public SupplyChain(Long id, Long supplierId, String supplyStatus, LocalDate expectedDeliveryDate, LocalDate actualDeliveryDate) {
+        this.id = id;
+        this.supplierId = supplierId;
+        this.supplyStatus = supplyStatus;
+        this.expectedDeliveryDate = expectedDeliveryDate;
+        this.actualDeliveryDate = actualDeliveryDate;
+    }
+    
+    
+
     public LocalDate getActualDeliveryDate() {
         return actualDeliveryDate;
     }

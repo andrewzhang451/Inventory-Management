@@ -25,6 +25,15 @@ public class ProductTracking {
     private LocalDate lastUpdated;
     private String currentLocation;
 
+    public ProductTracking(Long id, Long productId, String trackingStatus, LocalDate lastUpdated, String currentLocation) {
+        this.id = id;
+        this.productId = productId;
+        this.trackingStatus = trackingStatus;
+        this.lastUpdated = lastUpdated;
+        this.currentLocation = currentLocation;
+    }
+
+
     public String getCurrentLocation() {
         return currentLocation;
     }

@@ -27,6 +27,19 @@ public class Supplier {
     private String city;
     private String postalCode;
 
+    public Supplier(Long id, String supplierName, String contactName, String contactEmail, String contactPhone, String address, String city, String postalCode) {
+        this.id = id;
+        this.supplierName = supplierName;
+        this.contactName = contactName;
+        this.contactEmail = contactEmail;
+        this.contactPhone = contactPhone;
+        this.address = address;
+        this.city = city;
+        this.postalCode = postalCode;
+    }
+    
+    
+
     public String getPostalCode() {
         return postalCode;
     }
