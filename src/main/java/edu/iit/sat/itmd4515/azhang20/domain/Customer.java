@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
  *
  * @author AndrewZ
  */
-
 @Entity
 public class Customer {
 
@@ -27,8 +26,8 @@ public class Customer {
     private String city;
     private String postalCode;
 
-    public Customer(Long id, String name, String email, String phoneNumber, String address, String city, String postalCode) {
-        this.id = id;
+    public Customer(String name, String email, String phoneNumber, String address, String city, String postalCode) {
+
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -36,8 +35,6 @@ public class Customer {
         this.city = city;
         this.postalCode = postalCode;
     }
-    
-    
 
     public String getPostalCode() {
         return postalCode;
@@ -47,7 +44,6 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
-
     public String getCity() {
         return city;
     }
@@ -55,7 +51,6 @@ public class Customer {
     public void setCity(String city) {
         this.city = city;
     }
-
 
     public String getAddress() {
         return address;
@@ -65,7 +60,6 @@ public class Customer {
         this.address = address;
     }
 
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -73,7 +67,6 @@ public class Customer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
 
     public String getEmail() {
         return email;
@@ -83,7 +76,6 @@ public class Customer {
         this.email = email;
     }
 
-
     public String getName() {
         return name;
     }
@@ -92,7 +84,6 @@ public class Customer {
         this.name = name;
     }
 
-    
     public Customer() {
     }
 
@@ -107,6 +98,5 @@ public class Customer {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
+
 }

@@ -15,7 +15,7 @@ import jakarta.persistence.Id;
  */
 @Entity
 public class WarehouseManagement {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,15 +24,13 @@ public class WarehouseManagement {
     private int capacity;
     private int currentStockLevel;
 
-    public WarehouseManagement(Long id, String warehouseName, String location, int capacity, int currentStockLevel) {
-        this.id = id;
+    public WarehouseManagement(String warehouseName, String location, int capacity, int currentStockLevel) {
+
         this.warehouseName = warehouseName;
         this.location = location;
         this.capacity = capacity;
         this.currentStockLevel = currentStockLevel;
     }
-    
-    
 
     public int getCurrentStockLevel() {
         return currentStockLevel;
@@ -42,7 +40,6 @@ public class WarehouseManagement {
         this.currentStockLevel = currentStockLevel;
     }
 
-
     public int getCapacity() {
         return capacity;
     }
@@ -50,7 +47,6 @@ public class WarehouseManagement {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-
 
     public String getLocation() {
         return location;
@@ -60,7 +56,6 @@ public class WarehouseManagement {
         this.location = location;
     }
 
-
     public String getWarehouseName() {
         return warehouseName;
     }
@@ -69,16 +64,13 @@ public class WarehouseManagement {
         this.warehouseName = warehouseName;
     }
 
-
     public WarehouseManagement() {
     }
-    
 
     public WarehouseManagement(Long id) {
         this.id = id;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -86,7 +78,5 @@ public class WarehouseManagement {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    
+
 }

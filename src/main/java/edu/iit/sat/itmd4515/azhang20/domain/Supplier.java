@@ -13,9 +13,9 @@ import jakarta.persistence.Id;
  *
  * @author AndrewZ
  */
-
 @Entity
 public class Supplier {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,8 +27,8 @@ public class Supplier {
     private String city;
     private String postalCode;
 
-    public Supplier(Long id, String supplierName, String contactName, String contactEmail, String contactPhone, String address, String city, String postalCode) {
-        this.id = id;
+    public Supplier(String supplierName, String contactName, String contactEmail, String contactPhone, String address, String city, String postalCode) {
+
         this.supplierName = supplierName;
         this.contactName = contactName;
         this.contactEmail = contactEmail;
@@ -37,8 +37,6 @@ public class Supplier {
         this.city = city;
         this.postalCode = postalCode;
     }
-    
-    
 
     public String getPostalCode() {
         return postalCode;
@@ -47,7 +45,6 @@ public class Supplier {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
-
 
     public String getCity() {
         return city;
@@ -58,7 +55,6 @@ public class Supplier {
     }
 
     //city, postCode
-
     public String getAddress() {
         return address;
     }
@@ -66,7 +62,6 @@ public class Supplier {
     public void setAddress(String address) {
         this.address = address;
     }
-
 
     public String getContactPhone() {
         return contactPhone;
@@ -76,7 +71,6 @@ public class Supplier {
         this.contactPhone = contactPhone;
     }
 
-
     public String getContactEmail() {
         return contactEmail;
     }
@@ -84,7 +78,6 @@ public class Supplier {
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
     }
-
 
     public String getContactName() {
         return contactName;
@@ -94,7 +87,6 @@ public class Supplier {
         this.contactName = contactName;
     }
 
-
     public String getSupplierName() {
         return supplierName;
     }
@@ -103,16 +95,13 @@ public class Supplier {
         this.supplierName = supplierName;
     }
 
-
     public Supplier() {
     }
 
-    
     public Supplier(Long id) {
         this.id = id;
     }
 
-    
     public Long getId() {
         return id;
     }
@@ -120,7 +109,5 @@ public class Supplier {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    
+
 }

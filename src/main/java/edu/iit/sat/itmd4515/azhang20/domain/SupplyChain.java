@@ -16,6 +16,7 @@ import java.time.LocalDate;
  */
 @Entity
 public class SupplyChain {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,15 +25,13 @@ public class SupplyChain {
     private LocalDate expectedDeliveryDate;
     private LocalDate actualDeliveryDate;
 
-    public SupplyChain(Long id, Long supplierId, String supplyStatus, LocalDate expectedDeliveryDate, LocalDate actualDeliveryDate) {
-        this.id = id;
+    public SupplyChain(Long supplierId, String supplyStatus, LocalDate expectedDeliveryDate, LocalDate actualDeliveryDate) {
+
         this.supplierId = supplierId;
         this.supplyStatus = supplyStatus;
         this.expectedDeliveryDate = expectedDeliveryDate;
         this.actualDeliveryDate = actualDeliveryDate;
     }
-    
-    
 
     public LocalDate getActualDeliveryDate() {
         return actualDeliveryDate;
@@ -42,7 +41,6 @@ public class SupplyChain {
         this.actualDeliveryDate = actualDeliveryDate;
     }
 
-
     public LocalDate getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
@@ -50,8 +48,6 @@ public class SupplyChain {
     public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
         this.expectedDeliveryDate = expectedDeliveryDate;
     }
-
-    
 
     public String getSupplyStatus() {
         return supplyStatus;
@@ -61,7 +57,6 @@ public class SupplyChain {
         this.supplyStatus = supplyStatus;
     }
 
-
     public Long getSupplierId() {
         return supplierId;
     }
@@ -70,16 +65,13 @@ public class SupplyChain {
         this.supplierId = supplierId;
     }
 
-
-
     public SupplyChain() {
     }
 
     public SupplyChain(Long id) {
         this.id = id;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -87,7 +79,5 @@ public class SupplyChain {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    
+
 }

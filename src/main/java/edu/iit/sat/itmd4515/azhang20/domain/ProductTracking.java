@@ -25,14 +25,13 @@ public class ProductTracking {
     private LocalDate lastUpdated;
     private String currentLocation;
 
-    public ProductTracking(Long id, Long productId, String trackingStatus, LocalDate lastUpdated, String currentLocation) {
-        this.id = id;
+    public ProductTracking(Long productId, String trackingStatus, LocalDate lastUpdated, String currentLocation) {
+
         this.productId = productId;
         this.trackingStatus = trackingStatus;
         this.lastUpdated = lastUpdated;
         this.currentLocation = currentLocation;
     }
-
 
     public String getCurrentLocation() {
         return currentLocation;
@@ -42,7 +41,6 @@ public class ProductTracking {
         this.currentLocation = currentLocation;
     }
 
-
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
@@ -50,7 +48,6 @@ public class ProductTracking {
     public void setLastUpdated(LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
-
 
     public String getTrackingStatus() {
         return trackingStatus;
@@ -60,7 +57,6 @@ public class ProductTracking {
         this.trackingStatus = trackingStatus;
     }
 
-
     public Long getProductId() {
         return productId;
     }
@@ -69,9 +65,6 @@ public class ProductTracking {
         this.productId = productId;
     }
 
-    
-  
-    
     public ProductTracking() {
     }
 

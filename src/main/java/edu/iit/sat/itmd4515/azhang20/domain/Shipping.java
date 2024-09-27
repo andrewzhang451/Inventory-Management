@@ -16,6 +16,7 @@ import java.time.LocalDate;
  */
 @Entity
 public class Shipping {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,16 +26,14 @@ public class Shipping {
     private LocalDate shippingDate;
     private String shippingStatus; //For example: Shipped, In Transit, Delivered
 
-    public Shipping(Long id, Long orderId, String shippingAddress, String shippingMethod, LocalDate shippingDate, String shippingStatus) {
-        this.id = id;
+    public Shipping(Long orderId, String shippingAddress, String shippingMethod, LocalDate shippingDate, String shippingStatus) {
+
         this.orderId = orderId;
         this.shippingAddress = shippingAddress;
         this.shippingMethod = shippingMethod;
         this.shippingDate = shippingDate;
         this.shippingStatus = shippingStatus;
     }
-    
-    
 
     public String getShippingStatus() {
         return shippingStatus;
@@ -44,7 +43,6 @@ public class Shipping {
         this.shippingStatus = shippingStatus;
     }
 
-
     public LocalDate getShippingDate() {
         return shippingDate;
     }
@@ -52,7 +50,6 @@ public class Shipping {
     public void setShippingDate(LocalDate shippingDate) {
         this.shippingDate = shippingDate;
     }
-
 
     public String getShippingMethod() {
         return shippingMethod;
@@ -62,7 +59,6 @@ public class Shipping {
         this.shippingMethod = shippingMethod;
     }
 
-
     public String getShippingAddress() {
         return shippingAddress;
     }
@@ -70,8 +66,6 @@ public class Shipping {
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
-
-    
 
     public Long getOrderId() {
         return orderId;
@@ -81,7 +75,6 @@ public class Shipping {
         this.orderId = orderId;
     }
 
-    
     public Shipping() {
     }
 
@@ -96,7 +89,5 @@ public class Shipping {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    
+
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class OrderManagement {
     private LocalDate orderDate;
     private String orderStatus;
     private Double totalAmount;
+
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems; //@OneToMany
 
     public OrderManagement(Long customerId, LocalDate orderDate, String orderStatus, Double totalAmount, List<OrderItem> orderItems) {
@@ -35,7 +38,7 @@ public class OrderManagement {
         this.orderItems = orderItems;
     }
 
-    public List getOrderItems() {
+    List<OrderItem> getOrderItems() {
         return orderItems;
     }
 

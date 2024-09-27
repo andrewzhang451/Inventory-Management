@@ -17,32 +17,31 @@ import jakarta.persistence.ManyToOne;
  * @author AndrewZ
  */
 @Entity
-class OrderItem { 
+public class OrderItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public OrderItem(Long id, OrderManagement order, Inventory inventory, int quantity, double unitPrice, double totalPrice) {
-        this.id = id;
+    public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice, double totalPrice) {
+
         this.order = order;
         this.inventory = inventory;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.totalPrice = totalPrice;
     }
-    
-    
-    
+
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     private OrderManagement order; // Each order item is part of an order
-    
+
     @ManyToOne
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;// Each order item corresponds to a product in the inventory
     private int quantity;// The quantity ordered for this product
     private double unitPrice;// The price per unit at the time of the order
-    
+
     @Column(name = "total_price")
     private double totalPrice;// Total price for this order item (quantity * unitPrice)
 
@@ -54,7 +53,6 @@ class OrderItem {
         this.totalPrice = totalPrice;
     }
 
-
     public double getUnitPrice() {
         return unitPrice;
     }
@@ -62,7 +60,6 @@ class OrderItem {
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
-
 
     public int getQuantity() {
         return quantity;
@@ -72,7 +69,6 @@ class OrderItem {
         this.quantity = quantity;
     }
 
-
     public Inventory getInventory() {
         return inventory;
     }
@@ -81,7 +77,6 @@ class OrderItem {
         this.inventory = inventory;
     }
 
-
     public OrderManagement getOrder() {
         return order;
     }
@@ -89,7 +84,6 @@ class OrderItem {
     public void setOrder(OrderManagement order) {
         this.order = order;
     }
-
 
     public OrderItem() {
     }
@@ -101,7 +95,7 @@ class OrderItem {
         this.unitPrice = unitPrice;
         this.totalPrice = quantity * unitPrice;
     }
-    
+
     public OrderItem(Long id) {
         this.id = id;
     }
@@ -113,12 +107,11 @@ class OrderItem {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Override
     public String toString() {
-        return "OrderItem{" + "id=" + id + ", order=" + order + ", inventory=" + inventory + 
-               ", quantity=" + quantity + ", unitPrice=" + unitPrice + ", totalPrice=" + totalPrice + '}';
+        return "OrderItem{" + "id=" + id + ", order=" + order + ", inventory=" + inventory
+                + ", quantity=" + quantity + ", unitPrice=" + unitPrice + ", totalPrice=" + totalPrice + '}';
     }
-    
-    
+
 }
