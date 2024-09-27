@@ -40,7 +40,7 @@ public class InventoryJPATest {
         //before each testcase, we create standard test data to work with
         em = emf.createEntityManager(); //created the maanger
         tx = em.getTransaction(); //created the transaction
-        Inventory inventory = new Inventory("TEST DATA", LocalDate.of(2020, 12, 12), WindowType.FLOAT);
+        Inventory inventory = new Inventory("TEST DATA", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0);
         tx.begin();
         em.persist(inventory);//this tells the manager to save the object "inventory" to database/also meant to create a table and insert it into database
         tx.commit();
@@ -53,7 +53,7 @@ public class InventoryJPATest {
         //assert that you COULD read such val
         //if could read, then create was successful
         //create a new inventory, then assert it was successful 
-        Inventory inventory = new Inventory("WindowTest", LocalDate.of(2020, 12, 12), WindowType.INSULATED);
+        Inventory inventory = new Inventory("WindowName", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0);
         tx.begin();
         em.persist(inventory);//this tells the manager to save the object "inventory" to database/also meant to create a table and insert it into database
         tx.commit();
@@ -61,7 +61,7 @@ public class InventoryJPATest {
         Inventory readBackFromDatabase = em.find(Inventory.class, inventory.getId());
         assertNotNull(readBackFromDatabase);
         assertTrue(readBackFromDatabase.getId() > 0);
-        assertEquals("WindowTest", readBackFromDatabase.getName());
+        assertEquals("WindowName", readBackFromDatabase.getName());
     }
 
     @Test
@@ -78,7 +78,8 @@ public class InventoryJPATest {
         inventory.setProductionDate(LocalDate.of(2021, 01, 01));
         tx.commit();
 
-        Inventory readBackFromDatabase = em.createQuery("select i from Inventory i where i.name = 'TEST DATA'", Inventory.class).getSingleResult();
+        Inventory readBackFromDatabase = em.find(Inventory.class, inventory.getId());
+
         assertEquals(inventory.getId(), readBackFromDatabase.getId());
 
         assertEquals(LocalDate.of(2021, 01, 01), readBackFromDatabase.getProductionDate());

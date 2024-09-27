@@ -41,7 +41,7 @@ public class Inventory {
     @Column(name = "price_per_unit")
     private double pricePerUnit;
 
-    public Inventory(String windowFloat, LocalDate of, WindowType FLOAT) {
+    public Inventory() {
     }
 
     public Inventory(String name, LocalDate productionDate, WindowType type, int quantity, double pricePerUnit) {

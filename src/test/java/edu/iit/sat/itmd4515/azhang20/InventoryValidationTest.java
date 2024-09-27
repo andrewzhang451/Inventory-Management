@@ -21,7 +21,7 @@ public class InventoryValidationTest extends BaseValidationTest {
 
     @Test
     public void validInventoryTest() {
-        Inventory inventory = new Inventory("Test Window", LocalDate.of(2020, 12, 12), WindowType.FLOAT);
+        Inventory inventory = new Inventory("WindowName", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0);
         System.out.println("Valid Inventory: " + inventory.toString());
 
         Set<ConstraintViolation<Inventory>> violations = validator.validate(inventory);
@@ -31,7 +31,7 @@ public class InventoryValidationTest extends BaseValidationTest {
 
     @Test
     public void invalidBlankNameTest() {
-        Inventory inventory = new Inventory("", LocalDate.of(2020, 12, 12), WindowType.INSULATED); 
+        Inventory inventory = new Inventory("", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0); 
 
         System.out.println("Testing invalid blank name: " + inventory.toString());
 
@@ -46,7 +46,7 @@ public class InventoryValidationTest extends BaseValidationTest {
 
     @Test
     public void invalidFutureProductionDateTest() {
-        Inventory inventory = new Inventory("Test Window", LocalDate.of(2030, 1, 1), WindowType.FLOAT); 
+        Inventory inventory = new Inventory("WindowName", LocalDate.of(2025, 1, 1), WindowType.FLOAT, 100, 250.0);
 
         System.out.println("Testing invalid future production date: " + inventory.toString());
 

@@ -34,16 +34,16 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private OrderManagement order; // Each order item is part of an order
+    private OrderManagement order; 
 
     @ManyToOne
     @JoinColumn(name = "inventory_id", nullable = false)
-    private Inventory inventory;// Each order item corresponds to a product in the inventory
-    private int quantity;// The quantity ordered for this product
-    private double unitPrice;// The price per unit at the time of the order
+    private Inventory inventory;
+    private int quantity;
+    private double unitPrice;
 
     @Column(name = "total_price")
-    private double totalPrice;// Total price for this order item (quantity * unitPrice)
+    private double totalPrice;
 
     public double getTotalPrice() {
         return totalPrice;

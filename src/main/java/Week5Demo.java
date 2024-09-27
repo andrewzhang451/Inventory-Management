@@ -25,7 +25,8 @@ public class Week5Demo {
     public static void main(String... args) {
 
         //instantiated a new object that holds the ID=999l and value=windows
-        Inventory inventory = new Inventory("windowFloat", LocalDate.of(2020, 12, 12),WindowType.FLOAT);
+        // Correct instantiation of Inventory with all 5 parameters
+        Inventory inventory = new Inventory("WindowName", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0);
 
         //here we create a tool that help manage our database connection with our connection (itmd4515testPU)
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("itmd4515testPU");
