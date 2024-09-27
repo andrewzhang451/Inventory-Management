@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -21,15 +23,18 @@ public class Shipping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long orderId;//Reference to OrderManagement entity
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private OrderManagement order; // Reference to OrderManagement entity
     private String shippingAddress;
     private String shippingMethod;
     private LocalDate shippingDate;
     private String shippingStatus; //For example: Shipped, In Transit, Delivered
 
-    public Shipping(Long orderId, String shippingAddress, String shippingMethod, LocalDate shippingDate, String shippingStatus) {
-
-        this.orderId = orderId;
+    public Shipping(OrderManagement order, String shippingAddress, String shippingMethod, LocalDate shippingDate, String shippingStatus) {
+        this.order = order;
         this.shippingAddress = shippingAddress;
         this.shippingMethod = shippingMethod;
         this.shippingDate = shippingDate;
@@ -68,12 +73,12 @@ public class Shipping {
         this.shippingAddress = shippingAddress;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public OrderManagement getOrder() {
+        return order;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrder(OrderManagement order) {
+        this.order = order;
     }
 
     public Shipping() {
@@ -123,9 +128,7 @@ public class Shipping {
 
     @Override
     public String toString() {
-        return "Shipping{" + "id=" + id + ", orderId=" + orderId + ", shippingAddress=" + shippingAddress + ", shippingMethod=" + shippingMethod + ", shippingDate=" + shippingDate + ", shippingStatus=" + shippingStatus + '}';
+        return "Shipping{" + "id=" + id + ", order=" + order + ", shippingAddress=" + shippingAddress + ", shippingMethod=" + shippingMethod + ", shippingDate=" + shippingDate + ", shippingStatus=" + shippingStatus + '}';
     }
-    
-    
 
 }

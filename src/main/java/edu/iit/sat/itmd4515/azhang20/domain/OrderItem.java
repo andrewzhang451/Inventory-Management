@@ -36,6 +36,8 @@ public class OrderItem {
     /**
      *OrderItem is the owning side 
      *OrderManagement is the inverse side
+     * 
+     * this is the owning side
      **/
     
     

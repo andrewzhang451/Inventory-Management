@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -21,18 +23,23 @@ public class ProductTracking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long productId; //reference to Inventory entity
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Inventory product; // Reference to Inventory entity
+    
     private String trackingStatus; //for example: In Transit, Delivered, Delayed
     private LocalDate lastUpdated;
     private String currentLocation;
 
-    public ProductTracking(Long productId, String trackingStatus, LocalDate lastUpdated, String currentLocation) {
-
-        this.productId = productId;
+    public ProductTracking(Inventory product, String trackingStatus, LocalDate lastUpdated, String currentLocation) {
+        this.product = product;
         this.trackingStatus = trackingStatus;
         this.lastUpdated = lastUpdated;
         this.currentLocation = currentLocation;
     }
+
+    
 
     public String getCurrentLocation() {
         return currentLocation;
@@ -58,12 +65,12 @@ public class ProductTracking {
         this.trackingStatus = trackingStatus;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Inventory getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Inventory product) {
+        this.product = product;
     }
 
     public ProductTracking() {
@@ -113,8 +120,10 @@ public class ProductTracking {
 
     @Override
     public String toString() {
-        return "ProductTracking{" + "id=" + id + ", productId=" + productId + ", trackingStatus=" + trackingStatus + ", lastUpdated=" + lastUpdated + ", currentLocation=" + currentLocation + '}';
+        return "ProductTracking{" + "id=" + id + ", product=" + product + ", trackingStatus=" + trackingStatus + ", lastUpdated=" + lastUpdated + ", currentLocation=" + currentLocation + '}';
     }
+
+    
     
     
 

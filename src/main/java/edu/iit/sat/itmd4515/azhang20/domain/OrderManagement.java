@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,27 +25,39 @@ public class OrderManagement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long customerId;//reference to Customer Entity
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer; // Reference to Customer entity
     private LocalDate orderDate;
     private String orderStatus;
     private Double totalAmount;
 
+    /**
+     *OrderItem is the owning side 
+     *OrderManagement is the inverse side
+     * 
+     * this is the inverse side
+     **/
+    
+    
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems; //@OneToMany
 
-    public OrderManagement(Long customerId, LocalDate orderDate, String orderStatus, Double totalAmount, List<OrderItem> orderItems) {
-        this.customerId = customerId;
+    public OrderManagement(Customer customer, LocalDate orderDate, String orderStatus, Double totalAmount, List<OrderItem> orderItems) {
+        this.customer = customer;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.totalAmount = totalAmount;
         this.orderItems = orderItems;
     }
 
-    List<OrderItem> getOrderItems() {
+    public List<OrderItem> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(List orderItems) {
+    public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
 
@@ -71,13 +85,14 @@ public class OrderManagement {
         this.orderDate = orderDate;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
+
 
     public OrderManagement() {
     }
@@ -126,11 +141,6 @@ public class OrderManagement {
 
     @Override
     public String toString() {
-        return "OrderManagement{" + "id=" + id + ", customerId=" + customerId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", totalAmount=" + totalAmount + '}';
+        return "OrderManagement{" + "id=" + id + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", totalAmount=" + totalAmount + '}';
     }
-
-    
-    
-    
-
 }

@@ -11,10 +11,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -41,6 +43,9 @@ public class Inventory {
     @Column(name = "price_per_unit")
     private double pricePerUnit;
 
+    @OneToMany(mappedBy = "inventory")
+    private List<OrderItem> orderItems; // One inventory item can be referenced in many OrderItems
+    
     public Inventory() {
     }
 
@@ -50,6 +55,7 @@ public class Inventory {
         this.type = type;
         this.quantity = quantity;
         this.pricePerUnit = pricePerUnit;
+        
     }    
 
 
@@ -68,19 +74,12 @@ public class Inventory {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Override
     public String toString() {
-        return "Inventory{" + 
-                "id=" + id + 
-                ", name=" + name + 
-                ", productionDate=" + productionDate + 
-                ", type=" + type + 
-                ", quantity=" + quantity + 
-                ", pricePerUnit=" + pricePerUnit + 
-                '}';
+        return "Inventory{" + "id=" + id + ", name=" + name + ", productionDate=" + productionDate + ", type=" + type + ", quantity=" + quantity + ", pricePerUnit=" + pricePerUnit + ", orderItems=" + orderItems + '}';
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -126,6 +125,7 @@ public class Inventory {
     public void setProductionDate(LocalDate productionDate) {
         this.productionDate = productionDate;
     }
-
-
+    
+    
+    
 }

@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -26,6 +28,9 @@ public class Customer {
     private String address;
     private String city;
     private String postalCode;
+    
+    @OneToMany(mappedBy = "customer")
+    private List<OrderManagement> orders; // One customer can have many orders
 
     public Customer(String name, String email, String phoneNumber, String address, String city, String postalCode) {
 
@@ -131,10 +136,17 @@ public class Customer {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", address=" + address + ", city=" + city + ", postalCode=" + postalCode + '}';
+    public Customer(Long id, String name, String email, String phoneNumber, String address, String city, String postalCode) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.city = city;
+        this.postalCode = postalCode;
     }
+
+    
     
     
 
