@@ -4,6 +4,7 @@
  */
 package edu.iit.sat.itmd4515.azhang20.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,21 +35,19 @@ public class OrderItem {
     }
 
     /**
-     *OrderItem is the owning side 
-     *OrderManagement is the inverse side
-     * 
+     * OrderItem is the owning side OrderManagement is the inverse side
+     *
      * this is the owning side
-     **/
-    
-    
+     *
+     */
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private OrderManagement order; 
+    private OrderManagement order;
 
-    @ManyToOne 
+    @ManyToOne(cascade = CascadeType.PERSIST) // Add CascadeType.PERSIST
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
-    
+
     private int quantity;
     private double unitPrice;
 
@@ -117,16 +116,14 @@ public class OrderItem {
             return false;
         }
         final OrderItem other = (OrderItem) obj;
-        
+
         //if we are using GeneratedValue(), we need one more short circuit
         //if the id is null, return false
-        if( this.id == null || other.id == null ) {
+        if (this.id == null || other.id == null) {
             return false;
         }
         return Objects.equals(this.id, other.id);
     }
-    
-    
 
     public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice) {
         this.order = order;

@@ -3,17 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package edu.iit.sat.itmd4515.azhang20.lab3;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Objects;
 
 /**
  *
  * @author andrewz
  */
+
+@Entity
 public class CountryLanguage {
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.countryCode);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CountryLanguage other = (CountryLanguage) obj;
+        return Objects.equals(this.countryCode, other.countryCode);
+    }
     
     
+    
+    @Id
     @NotNull
     private String countryCode; //unique
     

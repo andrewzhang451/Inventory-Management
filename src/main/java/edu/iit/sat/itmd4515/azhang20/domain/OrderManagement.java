@@ -4,6 +4,7 @@
  */
 package edu.iit.sat.itmd4515.azhang20.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,25 +26,23 @@ public class OrderManagement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.PERSIST) // Add CascadeType.PERSIST
     @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer; // Reference to Customer entity
+    private Customer customer;
+
     private LocalDate orderDate;
     private String orderStatus;
     private Double totalAmount;
 
     /**
-     *OrderItem is the owning side 
-     *OrderManagement is the inverse side
-     * 
+     * OrderItem is the owning side OrderManagement is the inverse side
+     *
      * this is the inverse side
-     **/
-    
-    
-    @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItems; //@OneToMany
+     *
+     */
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
+    private List<OrderItem> orderItems;
 
     public OrderManagement(Customer customer, LocalDate orderDate, String orderStatus, Double totalAmount, List<OrderItem> orderItems) {
         this.customer = customer;
@@ -93,7 +92,6 @@ public class OrderManagement {
         this.customer = customer;
     }
 
-
     public OrderManagement() {
     }
 
@@ -116,16 +114,14 @@ public class OrderManagement {
             return false;
         }
         final OrderManagement other = (OrderManagement) obj;
-        
+
         //if we are using GeneratedValue(), we need one more short circuit
         //if the id is null, return false
-        if( this.id == null || other.id == null ) {
+        if (this.id == null || other.id == null) {
             return false;
         }
         return Objects.equals(this.id, other.id);
     }
-    
-    
 
     public OrderManagement(Long id) {
         this.id = id;

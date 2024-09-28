@@ -6,12 +6,20 @@ package edu.iit.sat.itmd4515.azhang20.lab3;
 
 import edu.iit.sat.itmd4515.azhang20.lab3.CountryLanguage;
 import jakarta.annotation.Resource;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.HeuristicMixedException;
+import jakarta.transaction.HeuristicRollbackException;
+import jakarta.transaction.NotSupportedException;
+import jakarta.transaction.RollbackException;
+import jakarta.transaction.SystemException;
+import jakarta.transaction.UserTransaction;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import java.io.IOException;
@@ -38,6 +46,13 @@ public class CountryLanguageServlet extends HttpServlet {
     @Resource(name = "java:app/jdbc/itmd4515DS")
     DataSource ds;
 
+    @PersistenceContext(name = "itmd4515PU")
+    EntityManager em;
+    
+    @Resource
+    UserTransaction tx;
+    
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOG.info("Inside CountryLanguageServlet.doGet()");
@@ -104,7 +119,10 @@ public class CountryLanguageServlet extends HttpServlet {
             //PASSED VALIDATION
             LOG.info("Country Language form has passed validation");
 
-            createCountryLanguage(countryLanguage);
+//            createCountryLanguage(countryLanguage);
+        
+            createCountryLanguageWithJPA(countryLanguage);
+
 
             req.setAttribute("countryLanguage", countryLanguage);
 
@@ -112,6 +130,34 @@ public class CountryLanguageServlet extends HttpServlet {
             rd.forward(req, resp);
         }
     }
+    
+    private void createCountryLanguageWithJPA(CountryLanguage cl) {
+        try {
+            tx.begin();
+        } catch (NotSupportedException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SystemException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        em.persist(cl);
+        try {
+            tx.commit();
+        } catch (RollbackException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (HeuristicMixedException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (HeuristicRollbackException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SecurityException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalStateException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SystemException ex) {
+            Logger.getLogger(CountryLanguageServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 
     private void createCountryLanguage(CountryLanguage countryLanguage) {
         String insertCountryLanguage = "INSERT INTO countrylanguage (CountryCode, Language, IsOfficial, Percentage) VALUES (?, ?, ?, ?)";
