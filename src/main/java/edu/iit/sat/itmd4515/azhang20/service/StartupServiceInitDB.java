@@ -9,6 +9,8 @@ import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -19,6 +21,8 @@ import jakarta.ejb.Startup;
 @Singleton
 public class StartupServiceInitDB {
     
+    private static final Logger LOG = Logger.getLogger(StartupServiceInitDB.class.getName());
+    
     @EJB WarehouseManagementService wareSvc;
     
     public StartupServiceInitDB() {
@@ -27,6 +31,8 @@ public class StartupServiceInitDB {
     
     @PostConstruct
     public void postConstruct(){
+//        LOG.info("Inside StartupServiceInitDB.postConstruct()");
+
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
                 
         //when using JPA, create non-owning entities first, Class class = new Class2() is considered instantiating owning entity
