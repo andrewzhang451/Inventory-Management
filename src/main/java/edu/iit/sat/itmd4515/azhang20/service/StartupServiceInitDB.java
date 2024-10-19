@@ -38,7 +38,7 @@ public class StartupServiceInitDB {
         //instead of using entity manager; call service method
         wareSvc.create(w1);
         wareSvc.create(w2);
-        wareSvc.create(w1);
+        wareSvc.create(w3);
         
     }
     
