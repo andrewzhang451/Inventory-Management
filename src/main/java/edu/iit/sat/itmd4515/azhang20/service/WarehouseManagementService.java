@@ -4,9 +4,11 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
+import edu.iit.sat.itmd4515.azhang20.domain.WarehouseManagement;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,30 @@ public class WarehouseManagementService {
     
     public WarehouseManagementService() {
         
-        
     }  
+    
+    public void create(WarehouseManagement w) {
+//        tx.begin();
+          em.persist(w);
+//        tx.commit();
+    }
+    
+    public WarehouseManagement read(Long id) {
+        return em.find(WarehouseManagement.class, id);
+    }
+    
+    public void update(WarehouseManagement w) {
+        em.merge(w);
+    }
+    
+    public void delete(WarehouseManagement w) {
+        em.remove(em.merge(w));
+    }
+    
+    public List<WarehouseManagement> readall(){
+//        return em.createQuery("select w from WarehouseManagement w", WarehouseManagement.class).getResultList();
+        return em.createQuery("WarehouseManagement.readall", WarehouseManagement.class).getResultList();
+    } 
+    
+    
 }
