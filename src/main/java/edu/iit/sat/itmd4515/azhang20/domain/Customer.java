@@ -18,7 +18,7 @@ import java.util.Objects;
  * @author AndrewZ
  */
 @Entity
-@NamedQuery(name = "Customer.readAll", query = "select p from Pet p")
+@NamedQuery(name = "Customer.readAll", query = "select p from Customer p")
 public class Customer {
 
     @Id

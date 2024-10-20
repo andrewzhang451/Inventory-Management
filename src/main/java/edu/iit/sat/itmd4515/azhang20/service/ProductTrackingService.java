@@ -4,8 +4,10 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
+import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.ProductTracking;
 import jakarta.ejb.Stateless;
+import java.util.List;
 
 /**
  *
@@ -16,6 +18,10 @@ public class ProductTrackingService extends AbstractService<ProductTracking>{
 
     public ProductTrackingService() {
         super(ProductTracking.class);
+    }
+    
+    public List<ProductTracking> readAll(){
+        return super.readAll("ProductTracking.readAll");
     }
     
 }

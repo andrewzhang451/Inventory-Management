@@ -4,8 +4,10 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
+//
 import edu.iit.sat.itmd4515.azhang20.domain.Inventory;
 import jakarta.ejb.Stateless;
+import java.util.List;
 
 /**
  *
@@ -18,4 +20,7 @@ public class InventoryService extends AbstractService<Inventory> {
         super(Inventory.class);
     }
     
+    public List<Inventory> readAll(){
+        return super.readAll("Inventory.readAll");
+    }
 }

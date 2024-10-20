@@ -4,8 +4,10 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
+import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.Shipping;
 import jakarta.ejb.Stateless;
+import java.util.List;
 
 /**
  *
@@ -18,4 +20,7 @@ public class ShippingService extends AbstractService<Shipping>{
         super(Shipping.class);
     }
     
+    public List<Shipping> readAll(){
+        return super.readAll("Shippping.readAll");
+    }
 }

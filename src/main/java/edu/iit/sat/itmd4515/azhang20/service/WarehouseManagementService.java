@@ -16,29 +16,37 @@ import java.util.List;
  */
 
 @Stateless
-public class WarehouseManagementService {
+public class WarehouseManagementService extends AbstractService<WarehouseManagement>{
     
     @PersistenceContext(name = "itmd4515PU")
     private EntityManager em;
-    
+
     public WarehouseManagementService() {
-        
-    }  
+        super(WarehouseManagement.class);
+    }
     
+    public List<WarehouseManagement> readAll(){
+        return super.readAll("WarehouseManagement.readAll");
+    }
+    
+    @Override
     public void create(WarehouseManagement w) {
 //        tx.begin();
           em.persist(w);
 //        tx.commit();
     }
     
+    @Override
     public WarehouseManagement read(Long id) {
         return em.find(WarehouseManagement.class, id);
     }
     
+    @Override
     public void update(WarehouseManagement w) {
         em.merge(w);
     }
     
+    @Override
     public void delete(WarehouseManagement w) {
         em.remove(em.merge(w));
     }

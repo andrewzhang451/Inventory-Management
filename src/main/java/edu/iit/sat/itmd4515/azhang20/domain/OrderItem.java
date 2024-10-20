@@ -27,13 +27,13 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice, double totalPrice) {
+    public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice) {
 
         this.order = order;
         this.inventory = inventory;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
-        this.totalPrice = totalPrice;
+        this.totalPrice = quantity * totalPrice;
     }
 
     /**
@@ -127,13 +127,13 @@ public class OrderItem {
         return Objects.equals(this.id, other.id);
     }
 
-    public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice) {
-        this.order = order;
-        this.inventory = inventory;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.totalPrice = quantity * unitPrice;
-    }
+//    public OrderItem(OrderManagement order, Inventory inventory, int quantity, double unitPrice) {
+//        this.order = order;
+//        this.inventory = inventory;
+//        this.quantity = quantity;
+//        this.unitPrice = unitPrice;
+//        this.totalPrice = quantity * unitPrice;
+//    }
 
     public OrderItem(Long id) {
         this.id = id;

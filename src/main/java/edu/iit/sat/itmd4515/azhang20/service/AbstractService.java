@@ -4,7 +4,6 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
-import edu.iit.sat.itmd4515.azhang20.domain.WarehouseManagement;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import java.util.List;
@@ -40,7 +39,7 @@ abstract class AbstractService<T> {
         em.remove(em.merge(e));
     }
     
-    protected List<T> readall(String namedQueryName){
+    protected List<T> readAll(String namedQueryName){
         return em.createQuery("namedQueryName", entityClass).getResultList();
     } 
 }

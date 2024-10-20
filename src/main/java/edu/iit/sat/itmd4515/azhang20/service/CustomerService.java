@@ -21,7 +21,7 @@ public class CustomerService extends AbstractService<Customer>{
     }
     
     public List<Customer> readAll(){
-        return super.readall("Customer.readAll");
+        return super.readAll("Customer.readAll");
     }
     
 }
