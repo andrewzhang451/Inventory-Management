@@ -14,7 +14,6 @@ import java.util.List;
  */
 @Stateless
 public class CustomerService extends AbstractService<Customer>{
-    Class<Customer> customerClass = Customer.class;
 
     public CustomerService() {
         super(Customer.class);
