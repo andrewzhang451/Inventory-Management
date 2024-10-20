@@ -4,6 +4,7 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
+import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.WarehouseManagement;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
@@ -24,6 +25,7 @@ public class StartupServiceInitDB {
     private static final Logger LOG = Logger.getLogger(StartupServiceInitDB.class.getName());
     
     @EJB WarehouseManagementService wareSvc;
+    @EJB CustomerService custSvc;
     
     public StartupServiceInitDB() {
         
@@ -45,6 +47,14 @@ public class StartupServiceInitDB {
         wareSvc.create(w1);
         wareSvc.create(w2);
         wareSvc.create(w3);
+        
+        Customer cust1 = new Customer("Jim", "Jm20@gmail.com", "9876543212", "74 S Emerald", "Kansas City", "31474");
+        Customer cust2 = new Customer("Tom", "Tm78@gmail.com", "4828602715", "58 N Walkbash", "New York City", "10101");
+        Customer cust3 = new Customer("George", "George@gmail.com", "4412485728", "23 W SunnySide", "Sanfrancisco", "82512");
+        
+        custSvc.create(cust1);
+        custSvc.create(cust2);
+        custSvc.create(cust3);
         
     }
     

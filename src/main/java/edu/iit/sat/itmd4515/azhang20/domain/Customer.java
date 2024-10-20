@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,7 @@ import java.util.Objects;
  * @author AndrewZ
  */
 @Entity
+@NamedQuery(name = "Customer.readAll", query = "select p from Pet p")
 public class Customer {
 
     @Id

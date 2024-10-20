@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import java.util.Objects;
 
 /**
@@ -19,6 +20,7 @@ import java.util.Objects;
  * @author AndrewZ
  */
 @Entity
+@NamedQuery(name = "OrderItem.readAll", query = "select o from OrderItem o")
 public class OrderItem {
 
     @Id

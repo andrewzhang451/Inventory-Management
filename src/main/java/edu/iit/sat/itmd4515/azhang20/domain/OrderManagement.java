@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Objects;
  * @author AndrewZ
  */
 @Entity
+@NamedQuery(name = "OrderManagement.readAll", query = "select oM from OrderManagement oM")
 public class OrderManagement {
 
     @Id

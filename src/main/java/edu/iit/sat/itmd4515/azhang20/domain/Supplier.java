@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import java.util.Objects;
 
 /**
@@ -15,6 +16,7 @@ import java.util.Objects;
  * @author AndrewZ
  */
 @Entity
+@NamedQuery(name = "Supplier.readAll", query = "select s from Supplier s")
 public class Supplier {
 
     @Id

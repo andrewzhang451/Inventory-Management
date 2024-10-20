@@ -4,14 +4,18 @@
  */
 package edu.iit.sat.itmd4515.azhang20.service;
 
+import edu.iit.sat.itmd4515.azhang20.domain.ProductTracking;
+import jakarta.ejb.Stateless;
+
 /**
  *
  * @author AndrewZ
  */
-class LOG {
+@Stateless
+public class ProductTrackingService extends AbstractService<ProductTracking>{
 
-    static void info(String inside_StartupServiceInitDBpostConstruct) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ProductTrackingService() {
+        super(ProductTracking.class);
     }
     
 }
