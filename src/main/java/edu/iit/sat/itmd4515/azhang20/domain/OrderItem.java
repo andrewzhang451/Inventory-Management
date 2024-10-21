@@ -55,7 +55,7 @@ public class OrderItem {
 
     @Column(name = "total_price")
     private double totalPrice;
-
+    
     public double getTotalPrice() {
         return totalPrice;
     }

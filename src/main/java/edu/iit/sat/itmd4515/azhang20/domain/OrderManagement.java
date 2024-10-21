@@ -53,6 +53,21 @@ public class OrderManagement {
         this.totalAmount = totalAmount;
         this.orderItems = orderItems;
     }
+    
+    public void addOrderItem(OrderItem item){
+        if(!this.orderItems.contains(item)){
+            this.orderItems.add(item);
+            item.setOrder(this);
+        }
+    }
+    
+    public void cancelOrderItem(OrderItem item) {
+        if(!this.orderItems.contains(item)) {
+            this.orderItems.remove(item);
+            item.setOrder(null);
+        } 
+        
+    }
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
