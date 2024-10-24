@@ -9,5 +9,21 @@ package edu.iit.sat.itmd4515.azhang20.domain;
  * @author AndrewZ
  */
 public enum WindowType {
-    FLOAT, LAMINATED, OBSCURED, TEMPERED, INSULATED, LOW_E; 
+    FLOAT("FLOAT"), 
+    LAMINATED("LAMINATED"), 
+    OBSCURED("OBSCURED"), 
+    TEMPERED("TEMPERED"), 
+    INSULATED("INSULATED"), 
+    LOW_E("LOW_E"); 
+    
+    private String label;
+
+    private WindowType(String label) {
+        this.label = label;
+    }
+    
+    
+    public String getLabel(){
+        return label;
+    }
 }

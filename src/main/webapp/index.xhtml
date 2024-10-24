@@ -1,32 +1,70 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="jakarta.faces.html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Customer Form</title>
     </h:head>
     <h:body>
         <h:form>
+
+            <!--customer name-->
             <p>
                 <h:panelGroup layout="block">
-                    <h:outputLabel value="customerName: " for="customerName">
-                        <h:inputText id="customerName">
-
-                        </h:inputText>
-                    </h:outputLabel>
+                    <h:outputLabel value="Customer Name: " for="customerName"/>
+                    <h:inputText id="customerName" value="#{customerController.customer.name}" required="true"/> 
+                    <h:message for="customerName" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
 
+            <!--customer email-->
             <p>
                 <h:panelGroup layout="block">
-                    <h:outputLabel value="customerEmail: " for="customerEmail">
-                        <h:inputText id="customerEmail">
-
-                        </h:inputText>
-                    </h:outputLabel>
+                    <h:outputLabel value="Customer Email: " for="customerEmail"/>
+                    <h:inputText id="customerEmail" value="#{customerController.customer.email}" required="true"/>
+                    <h:message for="customerEmail" errorStyle="color: red"/>
                 </h:panelGroup>
             </p> 
-        </h:form>
 
+            <!--customer phone number-->
+            <p>
+                <h:panelGroup layout="block">
+                    <h:outputLabel value="Customer Phone Number: " for="customerPhoneNumber"/>
+                    <h:inputText id="customerPhoneNumber" value="#{customerController.customer.phoneNumber}" required="true"/>
+                    <h:message for="customerPhoneNumber" errorStyle="color: red"/>
+                </h:panelGroup>
+            </p>
+
+            <!--customer address-->
+            <p>
+                <h:panelGroup layout="block">
+                    <h:outputLabel value="Customer Address: " for="customerAddress"/>
+                    <h:inputText id="customerAddress" value="#{customerController.customer.address}" required="true"/>
+                    <h:message for="customerAddress" errorStyle="color: red"/>
+                </h:panelGroup>
+            </p>
+
+            <!--customer city-->
+            <p>
+                <h:panelGroup layout="block">
+                    <h:outputLabel value="Customer City: " for="customercity"/>
+                    <h:inputText id="customercity" value="#{customerController.customer.city}" required="true"/>
+                    <h:message for="customercity" errorStyle="color: red"/>
+                </h:panelGroup>
+            </p>
+
+            <!--customer postal code-->
+            <p>
+                <h:panelGroup layout="block">
+                    <h:outputLabel value="Customer Postal Code: " for="customerPostalCode"/>
+                    <h:inputText id="customerPostalCode" value="#{customerController.customer.postalCode}" required="true"/> 
+                    <h:message for="customerPostalCode" errorStyle="color: red"/>
+                </h:panelGroup>
+            </p> 
+
+            <h:commandButton value="Create Customer" action="#{customerController.saveCustomer()}" />
+
+        </h:form>
     </h:body>
 </html>
