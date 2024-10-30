@@ -21,14 +21,25 @@ public class WarehouseManagementService extends AbstractService<WarehouseManagem
     @PersistenceContext(name = "itmd4515PU")
     private EntityManager em;
 
+    /**
+     *
+     */
     public WarehouseManagementService() {
         super(WarehouseManagement.class);
     }
     
+    /**
+     *
+     * @return
+     */
     public List<WarehouseManagement> readAll(){
         return super.readAll("WarehouseManagement.readAll");
     }
     
+    /**
+     *
+     * @param w
+     */
     @Override
     public void create(WarehouseManagement w) {
 //        tx.begin();
@@ -36,21 +47,38 @@ public class WarehouseManagementService extends AbstractService<WarehouseManagem
 //        tx.commit();
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public WarehouseManagement read(Long id) {
         return em.find(WarehouseManagement.class, id);
     }
     
+    /**
+     *
+     * @param w
+     */
     @Override
     public void update(WarehouseManagement w) {
         em.merge(w);
     }
     
+    /**
+     *
+     * @param w
+     */
     @Override
     public void delete(WarehouseManagement w) {
         em.remove(em.merge(w));
     }
     
+    /**
+     *
+     * @return
+     */
     public List<WarehouseManagement> readall(){
 //        return em.createQuery("select w from WarehouseManagement w", WarehouseManagement.class).getResultList();
         return em.createQuery("WarehouseManagement.readall", WarehouseManagement.class).getResultList();

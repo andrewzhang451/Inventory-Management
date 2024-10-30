@@ -16,10 +16,17 @@ import java.util.List;
 @Stateless
 public class InventoryService extends AbstractService<Inventory> {
 
+    /**
+     *
+     */
     public InventoryService() {
         super(Inventory.class);
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Inventory> readAll(){
         return super.readAll("Inventory.readAll");
     }

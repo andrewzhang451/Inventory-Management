@@ -30,6 +30,16 @@ public class Supplier {
     private String city;
     private String postalCode;
 
+    /**
+     *
+     * @param supplierName
+     * @param contactName
+     * @param contactEmail
+     * @param contactPhone
+     * @param address
+     * @param city
+     * @param postalCode
+     */
     public Supplier(String supplierName, String contactName, String contactEmail, String contactPhone, String address, String city, String postalCode) {
 
         this.supplierName = supplierName;
@@ -41,66 +51,130 @@ public class Supplier {
         this.postalCode = postalCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPostalCode() {
         return postalCode;
     }
 
+    /**
+     *
+     * @param postalCode
+     */
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     *
+     * @param city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
     //city, postCode
+
+    /**
+     *
+     * @return
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     *
+     * @param address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContactPhone() {
         return contactPhone;
     }
 
+    /**
+     *
+     * @param contactPhone
+     */
     public void setContactPhone(String contactPhone) {
         this.contactPhone = contactPhone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContactEmail() {
         return contactEmail;
     }
 
+    /**
+     *
+     * @param contactEmail
+     */
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContactName() {
         return contactName;
     }
 
+    /**
+     *
+     * @param contactName
+     */
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSupplierName() {
         return supplierName;
     }
 
+    /**
+     *
+     * @param supplierName
+     */
     public void setSupplierName(String supplierName) {
         this.supplierName = supplierName;
     }
 
+    /**
+     *
+     */
     public Supplier() {
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -108,6 +182,11 @@ public class Supplier {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -128,20 +207,34 @@ public class Supplier {
         return Objects.equals(this.id, other.id);
     }
     
-    
-
+    /**
+     *
+     * @param id
+     */
     public Supplier(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Supplier{" + "id=" + id + ", supplierName=" + supplierName + ", contactName=" + contactName + ", contactEmail=" + contactEmail + ", contactPhone=" + contactPhone + ", address=" + address + ", city=" + city + ", postalCode=" + postalCode + '}';

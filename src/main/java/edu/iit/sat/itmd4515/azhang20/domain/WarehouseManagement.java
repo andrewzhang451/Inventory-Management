@@ -27,6 +27,13 @@ public class WarehouseManagement {
     private int capacity;
     private int currentStockLevel;
 
+    /**
+     *
+     * @param warehouseName
+     * @param location
+     * @param capacity
+     * @param currentStockLevel
+     */
     public WarehouseManagement(String warehouseName, String location, int capacity, int currentStockLevel) {
 
         this.warehouseName = warehouseName;
@@ -35,41 +42,80 @@ public class WarehouseManagement {
         this.currentStockLevel = currentStockLevel;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCurrentStockLevel() {
         return currentStockLevel;
     }
 
+    /**
+     *
+     * @param currentStockLevel
+     */
     public void setCurrentStockLevel(int currentStockLevel) {
         this.currentStockLevel = currentStockLevel;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCapacity() {
         return capacity;
     }
 
+    /**
+     *
+     * @param capacity
+     */
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     *
+     * @param location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getWarehouseName() {
         return warehouseName;
     }
 
+    /**
+     *
+     * @param warehouseName
+     */
     public void setWarehouseName(String warehouseName) {
         this.warehouseName = warehouseName;
     }
 
+    /**
+     *
+     */
     public WarehouseManagement() {
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -77,6 +123,11 @@ public class WarehouseManagement {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -98,20 +149,34 @@ public class WarehouseManagement {
         return Objects.equals(this.id, other.id);
     }
     
-    
-
+    /**
+     *
+     * @param id
+     */
     public WarehouseManagement(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "WarehouseManagement{" + "id=" + id + ", warehouseName=" + warehouseName + ", location=" + location + ", capacity=" + capacity + ", currentStockLevel=" + currentStockLevel + '}';

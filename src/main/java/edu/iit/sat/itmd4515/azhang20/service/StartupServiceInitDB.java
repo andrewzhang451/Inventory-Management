@@ -36,11 +36,18 @@ public class StartupServiceInitDB {
     @EJB OrderItemService orderISvc;
     @EJB ShippingService shipSvc;
 
+    /**
+     *
+     */
     public StartupServiceInitDB() {
 
     }
 
     // MAKE SURE TO CREATE NON-OWNING ENTITIES FIRST AND THEN CREATE YOUR OWNING ENTITIES
+
+    /**
+     *
+     */
     @PostConstruct
     public void postConstruct() {
         LOG.info("Inside StartupServiceInitDB.postConstruct()");

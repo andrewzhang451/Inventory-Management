@@ -28,6 +28,13 @@ public class SupplyChain {
     private LocalDate expectedDeliveryDate;
     private LocalDate actualDeliveryDate;
 
+    /**
+     *
+     * @param supplierId
+     * @param supplyStatus
+     * @param expectedDeliveryDate
+     * @param actualDeliveryDate
+     */
     public SupplyChain(Long supplierId, String supplyStatus, LocalDate expectedDeliveryDate, LocalDate actualDeliveryDate) {
 
         this.supplierId = supplierId;
@@ -36,41 +43,80 @@ public class SupplyChain {
         this.actualDeliveryDate = actualDeliveryDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getActualDeliveryDate() {
         return actualDeliveryDate;
     }
 
+    /**
+     *
+     * @param actualDeliveryDate
+     */
     public void setActualDeliveryDate(LocalDate actualDeliveryDate) {
         this.actualDeliveryDate = actualDeliveryDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
 
+    /**
+     *
+     * @param expectedDeliveryDate
+     */
     public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
         this.expectedDeliveryDate = expectedDeliveryDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSupplyStatus() {
         return supplyStatus;
     }
 
+    /**
+     *
+     * @param supplyStatus
+     */
     public void setSupplyStatus(String supplyStatus) {
         this.supplyStatus = supplyStatus;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getSupplierId() {
         return supplierId;
     }
 
+    /**
+     *
+     * @param supplierId
+     */
     public void setSupplierId(Long supplierId) {
         this.supplierId = supplierId;
     }
 
+    /**
+     *
+     */
     public SupplyChain() {
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -78,6 +124,11 @@ public class SupplyChain {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -99,20 +150,34 @@ public class SupplyChain {
         return Objects.equals(this.id, other.id);
     }
     
-    
-
+    /**
+     *
+     * @param id
+     */
     public SupplyChain(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "SupplyChain{" + "id=" + id + ", supplierId=" + supplierId + ", supplyStatus=" + supplyStatus + ", expectedDeliveryDate=" + expectedDeliveryDate + ", actualDeliveryDate=" + actualDeliveryDate + '}';

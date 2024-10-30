@@ -28,6 +28,9 @@ public class CustomerController {
     // no persistence context so this is just a POJO
     private Customer customer;
 
+    /**
+     *
+     */
     public CustomerController() {
     }
 
@@ -38,22 +41,31 @@ public class CustomerController {
         customer = new Customer();
     }
 
-    
+    /**
+     *
+     * @return
+     */
     public String saveCustomer(){
         LOG.info("Inside PetControllser.savePet() before call to service: " + customer.toString());
         custSvc.create(customer); 
         LOG.info("Inside PetControllser.savePet() after call to service: " + customer.toString());
         
-        return "confirmation.xhtml";
+        return "createCustomerConfirmation.xhtml";
         
     }
     
-    
-    
+    /**
+     *
+     * @return
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     *
+     * @param customer
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

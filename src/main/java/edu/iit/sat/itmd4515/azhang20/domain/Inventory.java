@@ -20,7 +20,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ *
+ * @author AndrewZ
+ */
 @Entity
 @Table(name = "inventory")
 @NamedQuery(name = "Inventory.readAll", query = "select i from Inventory i")
@@ -48,9 +51,20 @@ public class Inventory {
     @OneToMany(mappedBy = "inventory")
     private List<OrderItem> orderItems; // One inventory item can be referenced in many OrderItems
     
+    /**
+     *
+     */
     public Inventory() {
     }
 
+    /**
+     *
+     * @param name
+     * @param productionDate
+     * @param type
+     * @param quantity
+     * @param pricePerUnit
+     */
     public Inventory(String name, LocalDate productionDate, WindowType type, int quantity, double pricePerUnit) {
         this.name = name;
         this.productionDate = productionDate;
@@ -60,28 +74,51 @@ public class Inventory {
         
     }    
 
-
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Inventory{" + "id=" + id + ", name=" + name + ", productionDate=" + productionDate + ", type=" + type + ", quantity=" + quantity + ", pricePerUnit=" + pricePerUnit + ", orderItems=" + orderItems + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -89,6 +126,11 @@ public class Inventory {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -111,19 +153,34 @@ public class Inventory {
         return Objects.equals(this.id, other.id);
     }
 
-  
+    /**
+     *
+     * @return
+     */
     public WindowType getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(WindowType type) {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getProductionDate() {
         return productionDate;
     }
 
+    /**
+     *
+     * @param productionDate
+     */
     public void setProductionDate(LocalDate productionDate) {
         this.productionDate = productionDate;
     }

@@ -34,6 +34,13 @@ public class ProductTracking {
     private LocalDate lastUpdated;
     private String currentLocation;
 
+    /**
+     *
+     * @param product
+     * @param trackingStatus
+     * @param lastUpdated
+     * @param currentLocation
+     */
     public ProductTracking(Inventory product, String trackingStatus, LocalDate lastUpdated, String currentLocation) {
         this.product = product;
         this.trackingStatus = trackingStatus;
@@ -41,43 +48,80 @@ public class ProductTracking {
         this.currentLocation = currentLocation;
     }
 
-    
-
+    /**
+     *
+     * @return
+     */
     public String getCurrentLocation() {
         return currentLocation;
     }
 
+    /**
+     *
+     * @param currentLocation
+     */
     public void setCurrentLocation(String currentLocation) {
         this.currentLocation = currentLocation;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
 
+    /**
+     *
+     * @param lastUpdated
+     */
     public void setLastUpdated(LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTrackingStatus() {
         return trackingStatus;
     }
 
+    /**
+     *
+     * @param trackingStatus
+     */
     public void setTrackingStatus(String trackingStatus) {
         this.trackingStatus = trackingStatus;
     }
 
+    /**
+     *
+     * @return
+     */
     public Inventory getProduct() {
         return product;
     }
 
+    /**
+     *
+     * @param product
+     */
     public void setProduct(Inventory product) {
         this.product = product;
     }
 
+    /**
+     *
+     */
     public ProductTracking() {
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -85,6 +129,11 @@ public class ProductTracking {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -106,20 +155,34 @@ public class ProductTracking {
         return Objects.equals(this.id, other.id);
     }
     
-    
-
+    /**
+     *
+     * @param id
+     */
     public ProductTracking(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "ProductTracking{" + "id=" + id + ", product=" + product + ", trackingStatus=" + trackingStatus + ", lastUpdated=" + lastUpdated + ", currentLocation=" + currentLocation + '}';

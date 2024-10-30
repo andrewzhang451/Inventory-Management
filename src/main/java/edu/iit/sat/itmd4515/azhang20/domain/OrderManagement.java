@@ -46,6 +46,14 @@ public class OrderManagement {
     @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
     private List<OrderItem> orderItems;
 
+    /**
+     *
+     * @param customer
+     * @param orderDate
+     * @param orderStatus
+     * @param totalAmount
+     * @param orderItems
+     */
     public OrderManagement(Customer customer, LocalDate orderDate, String orderStatus, Double totalAmount, List<OrderItem> orderItems) {
         this.customer = customer;
         this.orderDate = orderDate;
@@ -54,6 +62,10 @@ public class OrderManagement {
         this.orderItems = orderItems;
     }
     
+    /**
+     *
+     * @param item
+     */
     public void addOrderItem(OrderItem item){
         if(!this.orderItems.contains(item)){
             this.orderItems.add(item);
@@ -61,6 +73,10 @@ public class OrderManagement {
         }
     }
     
+    /**
+     *
+     * @param item
+     */
     public void cancelOrderItem(OrderItem item) {
         if(!this.orderItems.contains(item)) {
             this.orderItems.remove(item);
@@ -69,49 +85,96 @@ public class OrderManagement {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
 
+    /**
+     *
+     * @param orderItems
+     */
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getTotalAmount() {
         return totalAmount;
     }
 
+    /**
+     *
+     * @param totalAmount
+     */
     public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getOrderStatus() {
         return orderStatus;
     }
 
+    /**
+     *
+     * @param orderStatus
+     */
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getOrderDate() {
         return orderDate;
     }
 
+    /**
+     *
+     * @param orderDate
+     */
     public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     *
+     * @param customer
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
+    /**
+     *
+     */
     public OrderManagement() {
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -119,6 +182,11 @@ public class OrderManagement {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -140,18 +208,34 @@ public class OrderManagement {
         return Objects.equals(this.id, other.id);
     }
 
+    /**
+     *
+     * @param id
+     */
     public OrderManagement(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "OrderManagement{" + "id=" + id + ", customer=" + customer + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", totalAmount=" + totalAmount + '}';

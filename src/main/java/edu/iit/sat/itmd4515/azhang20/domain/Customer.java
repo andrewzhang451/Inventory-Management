@@ -34,6 +34,15 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<OrderManagement> orders; // One customer can have many orders
 
+    /**
+     *
+     * @param name
+     * @param email
+     * @param phoneNumber
+     * @param address
+     * @param city
+     * @param postalCode
+     */
     public Customer(String name, String email, String phoneNumber, String address, String city, String postalCode) {
 
         this.name = name;
@@ -44,57 +53,112 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPostalCode() {
         return postalCode;
     }
 
+    /**
+     *
+     * @param postalCode
+     */
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     *
+     * @param city
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     *
+     * @param address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     *
+     * @param phoneNumber
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     */
     public Customer() {
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -102,6 +166,11 @@ public class Customer {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -124,20 +193,40 @@ public class Customer {
         return Objects.equals(this.id, other.id);
     }
 
-    
-    
+    /**
+     *
+     * @param id
+     */
     public Customer(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @param id
+     * @param name
+     * @param email
+     * @param phoneNumber
+     * @param address
+     * @param city
+     * @param postalCode
+     */
     public Customer(Long id, String name, String email, String phoneNumber, String address, String city, String postalCode) {
         this.id = id;
         this.name = name;
