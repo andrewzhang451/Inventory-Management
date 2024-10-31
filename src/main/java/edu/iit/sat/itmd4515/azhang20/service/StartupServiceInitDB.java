@@ -11,6 +11,10 @@ import edu.iit.sat.itmd4515.azhang20.domain.OrderManagement;
 import edu.iit.sat.itmd4515.azhang20.domain.Shipping;
 import edu.iit.sat.itmd4515.azhang20.domain.WarehouseManagement;
 import edu.iit.sat.itmd4515.azhang20.domain.WindowType;
+import edu.iit.sat.itmd4515.azhang20.security.Group;
+import edu.iit.sat.itmd4515.azhang20.security.GroupService;
+import edu.iit.sat.itmd4515.azhang20.security.User;
+import edu.iit.sat.itmd4515.azhang20.security.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
@@ -35,6 +39,10 @@ public class StartupServiceInitDB {
     @EJB OrderManagementService orderMSvc;
     @EJB OrderItemService orderISvc;
     @EJB ShippingService shipSvc;
+    
+//    security realm services
+    @EJB UserService userSvc;
+    @EJB GroupService groupSvc;
 
     /**
      *
@@ -51,7 +59,54 @@ public class StartupServiceInitDB {
     @PostConstruct
     public void postConstruct() {
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
+        
+        //security realm initialization
+        Group ownerGroup = new Group("OWNER_GROUP","Group of pet owners");
+        Group customerGroup = new Group("CUSTOMER_GROUP","Group of customers");
+        Group sellerGroup = new Group("SELLER_GROUP", "Group of sellers");
+        Group adminGroup = new Group("ADMIN_GROUP", "Group of admins");
+        
+        groupSvc.create(ownerGroup);
+        groupSvc.create(customerGroup);
+        groupSvc.create(sellerGroup);
+        groupSvc.create(adminGroup);
 
+        User customer1 = new User("customer1", "customer1");
+        customer1.addGroup(customerGroup);
+        User customer2 = new User("customer2", "customer2");
+        customer2.addGroup(customerGroup);
+        User customer3 = new User("customer3", "customer3");
+        customer3.addGroup(customerGroup);
+        
+        User owner1 = new User("owner1", "owner1");
+        owner1.addGroup(ownerGroup);
+        User owner2 = new User("owner2", "owner2");
+        owner2.addGroup(ownerGroup);
+        User owner3 = new User("owner3", "owner3");
+        owner3.addGroup(ownerGroup);
+        
+        User admin = new User("admin", "admin");
+        admin.addGroup(adminGroup);
+        
+        User sellerGroup1 = new User("sellerGroup1", "sellerGroup1");
+        sellerGroup1.addGroup(sellerGroup);
+        User sellerGroup2 = new User("sellerGroup2", "sellerGroup2");
+        sellerGroup2.addGroup(sellerGroup);
+        User sellerGroup3 = new User("sellerGroup3", "sellerGroup3");
+        sellerGroup3.addGroup(sellerGroup);
+        
+        userSvc.create(customer1);
+        userSvc.create(customer2);
+        userSvc.create(customer3);
+        userSvc.create(owner1);
+        userSvc.create(owner2);
+        userSvc.create(owner3);
+        userSvc.create(admin);
+        userSvc.create(sellerGroup1);
+        userSvc.create(sellerGroup2);
+        userSvc.create(sellerGroup3);
+        
+        
         // NONE OWNING ENTITIES
         WarehouseManagement w1 = new WarehouseManagement("Amazon Warehouse", "Chicago, IL", 2, 998);
         WarehouseManagement w2 = new WarehouseManagement("Amazon Warehouse", "Chicago, IL", 3, 995);
