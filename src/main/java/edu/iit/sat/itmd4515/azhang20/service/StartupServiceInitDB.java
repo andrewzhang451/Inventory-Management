@@ -61,12 +61,10 @@ public class StartupServiceInitDB {
         LOG.info("Inside StartupServiceInitDB.postConstruct()");
         
         //security realm initialization
-        Group ownerGroup = new Group("OWNER_GROUP","Group of pet owners");
         Group customerGroup = new Group("CUSTOMER_GROUP","Group of customers");
         Group sellerGroup = new Group("SELLER_GROUP", "Group of sellers");
         Group adminGroup = new Group("ADMIN_GROUP", "Group of admins");
         
-        groupSvc.create(ownerGroup);
         groupSvc.create(customerGroup);
         groupSvc.create(sellerGroup);
         groupSvc.create(adminGroup);
@@ -77,13 +75,6 @@ public class StartupServiceInitDB {
         customer2.addGroup(customerGroup);
         User customer3 = new User("customer3", "customer3");
         customer3.addGroup(customerGroup);
-        
-        User owner1 = new User("owner1", "owner1");
-        owner1.addGroup(ownerGroup);
-        User owner2 = new User("owner2", "owner2");
-        owner2.addGroup(ownerGroup);
-        User owner3 = new User("owner3", "owner3");
-        owner3.addGroup(ownerGroup);
         
         User admin = new User("admin", "admin");
         admin.addGroup(adminGroup);
@@ -98,9 +89,6 @@ public class StartupServiceInitDB {
         userSvc.create(customer1);
         userSvc.create(customer2);
         userSvc.create(customer3);
-        userSvc.create(owner1);
-        userSvc.create(owner2);
-        userSvc.create(owner3);
         userSvc.create(admin);
         userSvc.create(sellerGroup1);
         userSvc.create(sellerGroup2);
