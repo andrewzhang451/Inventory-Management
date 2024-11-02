@@ -12,6 +12,8 @@
         <class>edu.iit.sat.itmd4515.azhang20.domain.Customer</class>
         <class>edu.iit.sat.itmd4515.azhang20.domain.Shipping</class>
         <class>edu.iit.sat.itmd4515.azhang20.domain.OrderItem</class>
+        <class>edu.iit.sat.itmd4515.azhang20.security.User</class>
+        <class>edu.iit.sat.itmd4515.azhang20.security.Group</class>
         
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

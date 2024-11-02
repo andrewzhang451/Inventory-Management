@@ -3,14 +3,22 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="jakarta.faces.facelets"
-                template="../WEB-INF/templates/authNtemplate.xhtml">
+                template="../WEB-INF/templates/authNtemplate.xhtml"
+                xmlns:h="jakarta.faces.html">
 
     <ui:define name="title">
-        WIS Seller Section 
+        WIS Seller Section, Your seller username is #{loginController.authenticatedUsername}
     </ui:define>
 
     <ui:define name="content">
         WIS Seller Content
+        
+        <h:form>
+            <ul>
+                <li><h:link outcome="/welcome.xhtml">Home</h:link></li>
+            </ul>
+        </h:form>
+        
     </ui:define>
 
 </ui:composition>

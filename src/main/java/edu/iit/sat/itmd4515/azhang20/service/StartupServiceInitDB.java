@@ -76,6 +76,8 @@ public class StartupServiceInitDB {
         User customer3 = new User("customer3", "customer3");
         customer3.addGroup(customerGroup);
         
+        
+        
         User admin = new User("admin", "admin");
         admin.addGroup(adminGroup);
         
@@ -105,9 +107,16 @@ public class StartupServiceInitDB {
         wareSvc.create(w3);
 
         Customer cust1 = new Customer("Jim", "Jm20@gmail.com", "9876543212", "74 S Emerald", "Kansas City", "31474");
+        cust1.setUser(customer1);
+        
         Customer cust2 = new Customer("Tom", "Tm78@gmail.com", "4828602715", "58 N Walkbash", "New York City", "10101");
+        cust2.setUser(customer2);
+        
         Customer cust3 = new Customer("George", "George@gmail.com", "4412485728", "23 W SunnySide", "Sanfrancisco", "82512");
-
+        cust3.setUser(customer3);
+        
+        
+        
         custSvc.create(cust1);
         custSvc.create(cust2);
         custSvc.create(cust3);

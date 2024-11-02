@@ -23,7 +23,7 @@ import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition
 @DatabaseIdentityStoreDefinition(
         dataSourceLookup = "java:app/jdbc/itmd4515DS",
         callerQuery = "select PASSWORD from SEC_USER where USERNAME = ?",
-        groupsQuery = "select GROUPNAME from SEC_USER_GROUP where USERNAME = ?"
+        groupsQuery = "select GROUPNAME from SEC_USER_GROUPS where USERNAME = ?"
         
 )
 public class ITMD4515SecurityConfig {

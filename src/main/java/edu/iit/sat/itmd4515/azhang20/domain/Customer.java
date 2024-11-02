@@ -4,12 +4,15 @@
  */
 package edu.iit.sat.itmd4515.azhang20.domain;
 
+import edu.iit.sat.itmd4515.azhang20.security.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,7 +33,29 @@ public class Customer {
     private String address;
     private String city;
     private String postalCode;
-    
+
+    @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
+
+    /**
+     * Get the value of user
+     *
+     * @return the value of user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Set the value of user
+     *
+     * @param user new value of user
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @OneToMany(mappedBy = "customer")
     private List<OrderManagement> orders; // One customer can have many orders
 
@@ -183,13 +208,13 @@ public class Customer {
             return false;
         }
         final Customer other = (Customer) obj;
-        
+
         //if we are using GeneratedValue(), we need one more short circuit
         //if the id is null, return false
-        if( this.id == null || other.id == null ) {
+        if (this.id == null || other.id == null) {
             return false;
         }
-        
+
         return Objects.equals(this.id, other.id);
     }
 
@@ -236,9 +261,5 @@ public class Customer {
         this.city = city;
         this.postalCode = postalCode;
     }
-
-    
-    
-    
 
 }

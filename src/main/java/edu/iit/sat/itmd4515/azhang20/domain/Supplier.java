@@ -4,11 +4,14 @@
  */
 package edu.iit.sat.itmd4515.azhang20.domain;
 
+import edu.iit.sat.itmd4515.azhang20.security.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import java.util.Objects;
 
 /**
@@ -18,6 +21,28 @@ import java.util.Objects;
 @Entity
 @NamedQuery(name = "Supplier.readAll", query = "select s from Supplier s")
 public class Supplier {
+
+    @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
+
+    /**
+     * Get the value of user
+     *
+     * @return the value of user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Set the value of user
+     *
+     * @param user new value of user
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -84,7 +109,6 @@ public class Supplier {
     }
 
     //city, postCode
-
     /**
      *
      * @return
@@ -201,12 +225,12 @@ public class Supplier {
         final Supplier other = (Supplier) obj;
         //if we are using GeneratedValue(), we need one more short circuit
         //if the id is null, return false
-        if( this.id == null || other.id == null ) {
+        if (this.id == null || other.id == null) {
             return false;
         }
         return Objects.equals(this.id, other.id);
     }
-    
+
     /**
      *
      * @param id
@@ -239,7 +263,5 @@ public class Supplier {
     public String toString() {
         return "Supplier{" + "id=" + id + ", supplierName=" + supplierName + ", contactName=" + contactName + ", contactEmail=" + contactEmail + ", contactPhone=" + contactPhone + ", address=" + address + ", city=" + city + ", postalCode=" + postalCode + '}';
     }
-    
-    
 
 }

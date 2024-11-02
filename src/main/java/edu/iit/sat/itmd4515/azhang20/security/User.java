@@ -5,6 +5,7 @@
 package edu.iit.sat.itmd4515.azhang20.security;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -21,12 +22,14 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "SEC_USER")
+@EntityListeners(UserPasswordHash.class) 
 @NamedQuery(name = "User.findAll", query = "select u from User u")
 public class User {
 
     @Id
     private String username;
-
+    private String password;
+    
     @Override
     public String toString() {
         return "User{" + "username=" + username + ", password=" + password + ", groups=" + groups + '}';
@@ -71,8 +74,6 @@ public class User {
         this.groups.remove(g);
         g.getUsers().remove(this);
     }
-    
-    private String password;
     
     @ManyToMany
     @JoinTable(name="SEC_USER_GROUPS",
