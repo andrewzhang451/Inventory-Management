@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author AndrewZ
  */
-public class JSFPhaseListener implements PhaseListener{
+public class JSFPhaseListener implements PhaseListener {
 
     private static final Logger LOG = Logger.getLogger(JSFPhaseListener.class.getName());
     
@@ -25,7 +25,7 @@ public class JSFPhaseListener implements PhaseListener{
     @Override
     public void beforePhase(PhaseEvent event) {
         
-        if (event.getPhaseId() == PhaseId.RESTORE_VIEW){
+        if (event.getPhaseId() == PhaseId.RESTORE_VIEW) {
             LOG.info("=============================== NEW JSF REQUST STARTING ===============================");
         }
         
@@ -36,7 +36,7 @@ public class JSFPhaseListener implements PhaseListener{
     public void afterPhase(PhaseEvent event) {
         LOG.info("After JSF Phase ====================================>" + event.getPhaseId());
         
-        if (event.getPhaseId() == PhaseId.RENDER_RESPONSE){
+        if (event.getPhaseId() == PhaseId.RENDER_RESPONSE) {
             LOG.info("=============================== NEW JSF REQUST ENDING ===============================");
         }
     }
