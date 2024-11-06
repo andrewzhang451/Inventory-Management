@@ -54,6 +54,18 @@ public class LoginController {
         return securityContext.getCallerPrincipal().getName();
     }
     
+    public boolean isCustomer(){
+        return securityContext.isCallerInRole("CUSTOMER_ROLE");
+    }
+    
+    public boolean isSeller(){
+        return securityContext.isCallerInRole("SELLER_ROLE");
+    }
+    
+    public boolean isAdmin(){
+        return securityContext.isCallerInRole("ADMIN_ROLE");
+    }
+    
     
     // Login method
     public String doLogin(){
