@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
       xmlns:h="jakarta.faces.html"
       xmlns:ui="jakarta.faces.facelets">
 
@@ -31,7 +32,7 @@
 
                         <ui:fragment rendered="#{loginController.admin}">
                             <li class="nav-item">
-                                <h:link class="nav-link" outcome="/admin/welcome.xhtml">Admin Access</h:link>
+                                <h:link styleClass="${fn:startsWith(view.viewId, '/admin/welcome.xhtml') ? 'nav-link active' : 'nav-link'}" outcome="/admin/welcome.xhtml">Admin Access</h:link>
                             </li>
                         </ui:fragment>          
 
