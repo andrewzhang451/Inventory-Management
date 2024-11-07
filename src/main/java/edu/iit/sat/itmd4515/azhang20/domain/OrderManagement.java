@@ -4,6 +4,7 @@
  */
 package edu.iit.sat.itmd4515.azhang20.domain;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ import java.util.Objects;
 @NamedQuery(name = "OrderManagement.readAll", query = "select oM from OrderManagement oM")
 public class OrderManagement {
 
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

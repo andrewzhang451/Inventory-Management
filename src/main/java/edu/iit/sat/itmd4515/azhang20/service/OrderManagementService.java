@@ -7,12 +7,14 @@ package edu.iit.sat.itmd4515.azhang20.service;
 import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.OrderManagement;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Named;
 import java.util.List;
 
 /**
  *
  * @author AndrewZ
  */
+@Named
 @Stateless
 public class OrderManagementService extends AbstractService<OrderManagement>{
 

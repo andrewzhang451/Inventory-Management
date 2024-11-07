@@ -4,20 +4,67 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="jakarta.faces.facelets"
                 template="../WEB-INF/templates/authNtemplate.xhtml"
-                xmlns:h="jakarta.faces.html">
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core">
 
     <ui:define name="title">
         WIS Admin Section 
     </ui:define>
 
     <ui:define name="content">
-        WIS Administrative Content. Your admin username is #{loginController.authenticatedUsername}
+        WIS Administrative Content. Welcome back #{loginController.authenticatedUsername} !
         
-        <h:form>
+        <h:dataTable 
+            styleClass="table table-striped table-hover"
+            value="#{CustomerService.readAll()}" var="customer">
+            <h:column>
+                <f:facet name="header">Customer ID</f:facet>
+                <h:outputText value="#{customer.id}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer address</f:facet>
+                <h:outputText value="#{customer.address}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer city</f:facet>
+                <h:outputText value="#{customer.city}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer email</f:facet>
+                <h:outputText value="#{customer.email}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer name</f:facet>
+                <h:outputText value="#{customer.name}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer Phone Number</f:facet>
+                <h:outputText value="#{customer.phoneNumber}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer Postal Code</f:facet>
+                <h:outputText value="#{customer.postalCode}"/>
+            </h:column>
+            
+        </h:dataTable>
+        
+                    
+        
+        
+        
+        
+        
+<!--        <h:form>
             <ul>
                 <li><h:link outcome="/welcome.xhtml">Home</h:link></li>
             </ul>
-        </h:form>
+        </h:form>-->
         
     </ui:define>
 
