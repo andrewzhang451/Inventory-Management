@@ -4,21 +4,51 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="jakarta.faces.facelets"
                 template="../WEB-INF/templates/authNtemplate.xhtml"
-                xmlns:h="jakarta.faces.html">
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core">
 
     <ui:define name="title">
-        WIS Seller Section, Your seller username is #{loginController.authenticatedUsername}
+        WIS Seller Section - Shipping Information
     </ui:define>
 
     <ui:define name="content">
-        WIS Seller Content
-        
-        <h:form>
+        <h2>Shipping Information for All Customer Orders</h2>
+
+        <h:dataTable 
+            styleClass="table table-striped table-hover" 
+            value="#{shippingController.allShipments}" var="shipping">
+            
+            <h:column>
+                <f:facet name="header">Order ID</f:facet>
+                <h:outputText value="#{shipping.order.id}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Shipping Address</f:facet>
+                <h:outputText value="#{shipping.shippingAddress}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Shipping Method</f:facet>
+                <h:outputText value="#{shipping.shippingMethod}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Shipping Date</f:facet>
+                <h:outputText value="#{shipping.shippingDate}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Shipping Status</f:facet>
+                <h:outputText value="#{shipping.shippingStatus}"/>
+            </h:column>
+        </h:dataTable>
+
+<!--        <h:form>
             <ul>
                 <li><h:link outcome="/welcome.xhtml">Home</h:link></li>
             </ul>
-        </h:form>
-        
+        </h:form>-->
     </ui:define>
 
 </ui:composition>

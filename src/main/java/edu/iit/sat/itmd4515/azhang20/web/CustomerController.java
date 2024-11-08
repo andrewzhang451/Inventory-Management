@@ -36,7 +36,7 @@ public class CustomerController {
 
     @PostConstruct
     private void postConstructor() {
-        LOG.info("Inside PetController.postConstruct()");
+        LOG.info("Inside customerController.postConstruct()");
         
         customer = new Customer();
     }
@@ -46,9 +46,9 @@ public class CustomerController {
      * @return
      */
     public String saveCustomer(){
-        LOG.info("Inside PetControllser.savePet() before call to service: " + customer.toString());
+        LOG.info("Inside customerControllser.savePet() before call to service: " + customer.toString());
         custSvc.create(customer); 
-        LOG.info("Inside PetControllser.savePet() after call to service: " + customer.toString());
+        LOG.info("Inside customerControllser.savePet() after call to service: " + customer.toString());
         
         return "createCustomerConfirmation.xhtml";
         

@@ -1,33 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package edu.iit.sat.itmd4515.azhang20.service;
 
-import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.Shipping;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Named;
 import java.util.List;
 
 /**
- *
- * @author AndrewZ
+ * Service class for Shipping entity operations.
  */
+@Named
 @Stateless
-public class ShippingService extends AbstractService<Shipping>{
+public class ShippingService extends AbstractService<Shipping> {
 
-    /**
-     *
-     */
     public ShippingService() {
         super(Shipping.class);
     }
-    
-    /**
-     *
-     * @return
-     */
-    public List<Shipping> readAll(){
-        return super.readAll("Shippping.readAll");
-    }
+
+    public List<Shipping> findAll() {
+    return em.createNamedQuery("Shipping.readAll", Shipping.class).getResultList();
+}
+
 }
