@@ -33,4 +33,7 @@ public class OrderItemService extends AbstractService<OrderItem>{
         return super.readAll("OrderItem.readAll");
     }
     
+//        public OrderItem findByUsername(String uname){
+//        return em.createNamedQuery("OrderItem.findByUsername", OrderItem.class).setParameter("uname", uname).getSingleResult();
+//    }
 }

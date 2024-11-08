@@ -17,7 +17,7 @@
         
         <h:dataTable 
             styleClass="table table-striped table-hover"
-            value="#{CustomerService.readAll()}" var="customer">
+            value="#{orderManagementWelcomeController.orderManagement.customer}" var="customer">
             <h:column>
                 <f:facet name="header">Customer ID</f:facet>
                 <h:outputText value="#{customer.id}"/>

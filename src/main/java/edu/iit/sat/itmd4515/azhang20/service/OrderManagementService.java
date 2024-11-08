@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package edu.iit.sat.itmd4515.azhang20.service;
-
-import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.OrderManagement;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Named;
@@ -31,5 +29,9 @@ public class OrderManagementService extends AbstractService<OrderManagement>{
      */
     public List<OrderManagement> readAll(){
         return super.readAll("OrderManagement.readAll");
+    }
+    
+    public OrderManagement findByUsername(String uname){
+        return em.createNamedQuery("OrderManagement.findByUsername", OrderManagement.class).setParameter("uname", uname).getSingleResult();
     }
 }

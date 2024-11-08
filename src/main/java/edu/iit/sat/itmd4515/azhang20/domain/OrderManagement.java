@@ -24,6 +24,10 @@ import java.util.Objects;
  */
 @Entity
 @NamedQuery(name = "OrderManagement.readAll", query = "select oM from OrderManagement oM")
+@NamedQuery(name = "OrderManagement.findByUsername", query = "select oM from OrderManagement oM where oM.customer.user.username = :uname")
+
+
+//@NamedQuery(name = "OrderManagement.findByUsername", query = "select oM from OrderManagement oM where oM.user.username = :uname")
 public class OrderManagement {
 
    

@@ -27,6 +27,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "inventory")
 @NamedQuery(name = "Inventory.readAll", query = "select i from Inventory i")
+//@NamedQuery(name = "Inventory.findByUsername", query = "select i from Inventory i where i.user.username = :uname")
+
 public class Inventory {
     
     @Id 

@@ -22,12 +22,16 @@ public class InventoryService extends AbstractService<Inventory> {
     public InventoryService() {
         super(Inventory.class);
     }
-    
+
     /**
      *
      * @return
      */
-    public List<Inventory> readAll(){
+    public List<Inventory> readAll() {
         return super.readAll("Inventory.readAll");
+    }
+
+    public Inventory findByUsername(String uname) {
+        return em.createNamedQuery("Inventory.findByUsername", Inventory.class).setParameter("uname", uname).getSingleResult();
     }
 }
