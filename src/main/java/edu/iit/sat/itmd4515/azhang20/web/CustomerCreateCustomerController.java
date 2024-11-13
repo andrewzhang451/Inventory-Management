@@ -9,6 +9,7 @@ import edu.iit.sat.itmd4515.azhang20.service.CustomerService;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.logging.Logger;
 
@@ -18,12 +19,13 @@ import java.util.logging.Logger;
  */
 @Named
 @RequestScoped
-public class CustomerController {
+public class CustomerCreateCustomerController {
     
     @EJB CustomerService custSvc;
+    @Inject CustomerWelcomeController cwc; 
     
 
-    private static final Logger LOG = Logger.getLogger(CustomerController.class.getName());
+    private static final Logger LOG = Logger.getLogger(CustomerCreateCustomerController.class.getName());
 
     // no persistence context so this is just a POJO
     private Customer customer;
@@ -31,7 +33,7 @@ public class CustomerController {
     /**
      *
      */
-    public CustomerController() {
+    public CustomerCreateCustomerController() {
     }
 
     @PostConstruct
@@ -48,6 +50,7 @@ public class CustomerController {
     public String saveCustomer(){
         LOG.info("Inside customerControllser.savePet() before call to service: " + customer.toString());
         custSvc.create(customer); 
+//        custSvc.createCustomerForAuthenticatedCustomer(customer, cwc.getCustomer());
         LOG.info("Inside customerControllser.savePet() after call to service: " + customer.toString());
         
         return "createCustomerConfirmation.xhtml";

@@ -8,6 +8,7 @@ import edu.iit.sat.itmd4515.azhang20.domain.Customer;
 import edu.iit.sat.itmd4515.azhang20.domain.OrderItem;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Named;
+import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 /**
@@ -24,6 +25,15 @@ public class OrderItemService extends AbstractService<OrderItem>{
     public OrderItemService() {
         super(OrderItem.class);
     }
+    
+    public List<OrderItem> findByCustomer(Customer customer) {
+    TypedQuery<OrderItem> query = em.createQuery(
+        "SELECT oi FROM OrderItem oi WHERE oi.order.customer = :customer", OrderItem.class
+    );
+    query.setParameter("customer", customer);
+    return query.getResultList();
+}
+    
     
     /**
      *

@@ -36,5 +36,14 @@ public class CustomerService extends AbstractService<Customer>{
     public Customer findByUsername(String uname){
         return em.createNamedQuery("Customer.findByUsername", Customer.class).setParameter("uname", uname).getSingleResult();
     }
+
+//    public void createCustomerForAuthenticatedCustomer(Customer customer, Customer customer0) {
+//        em.persist(customer);
+//        
+//        Customer customerRef = em.getReference(Customer.class, customer.getId());
+//        customerRef.addCustomer
+//    }
+    
+    
      
 }

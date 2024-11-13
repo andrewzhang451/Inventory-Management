@@ -40,6 +40,6 @@ public abstract class AbstractService<T> {
     }
     
     protected List<T> readAll(String namedQueryName){
-        return em.createQuery("namedQueryName", entityClass).getResultList();
+        return em.createNamedQuery(namedQueryName, entityClass).getResultList();
     } 
 }

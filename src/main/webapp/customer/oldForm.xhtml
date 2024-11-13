@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="jakarta.faces.html">
     <h:head>
-        <title>Customer Form</title>
+        <title>Add a new Customer</title>
     </h:head>
     <h:body>
         <h:form>
@@ -13,7 +13,7 @@
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Customer Name: " for="customerName"/>
-                    <h:inputText id="customerName" value="#{customerController.customer.name}" required="true"/> 
+                    <h:inputText id="customerName" value="#{customerCreateCustomerController.customer.name}" required="true"/> 
                     <h:message for="customerName" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
@@ -22,7 +22,7 @@
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Customer Email: " for="customerEmail"/>
-                    <h:inputText id="customerEmail" value="#{customerController.customer.email}" required="true"/>
+                    <h:inputText id="customerEmail" value="#{customerCreateCustomerController.customer.email}" required="true"/>
                     <h:message for="customerEmail" errorStyle="color: red"/>
                 </h:panelGroup>
             </p> 
@@ -31,7 +31,7 @@
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Customer Phone Number: " for="customerPhoneNumber"/>
-                    <h:inputText id="customerPhoneNumber" value="#{customerController.customer.phoneNumber}" required="true"/>
+                    <h:inputText id="customerPhoneNumber" value="#{customerCreateCustomerController.customer.phoneNumber}" required="true"/>
                     <h:message for="customerPhoneNumber" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
@@ -40,7 +40,7 @@
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Customer Address: " for="customerAddress"/>
-                    <h:inputText id="customerAddress" value="#{customerController.customer.address}" required="true"/>
+                    <h:inputText id="customerAddress" value="#{customerCreateCustomerController.customer.address}" required="true"/>
                     <h:message for="customerAddress" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
@@ -49,7 +49,7 @@
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Customer City: " for="customercity"/>
-                    <h:inputText id="customercity" value="#{customerController.customer.city}" required="true"/>
+                    <h:inputText id="customercity" value="#{customerCreateCustomerController.customer.city}" required="true"/>
                     <h:message for="customercity" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
@@ -58,12 +58,12 @@
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Customer Postal Code: " for="customerPostalCode"/>
-                    <h:inputText id="customerPostalCode" value="#{customerController.customer.postalCode}" required="true"/> 
+                    <h:inputText id="customerPostalCode" value="#{customerCreateCustomerController.customer.postalCode}" required="true"/> 
                     <h:message for="customerPostalCode" errorStyle="color: red"/>
                 </h:panelGroup>
             </p> 
 
-            <h:commandButton value="Create Customer" action="#{customerController.saveCustomer()}" />
+            <h:commandButton value="Create Customer" action="#{customerCreateCustomerController.saveCustomer()}" />
 
         </h:form>
     </h:body>

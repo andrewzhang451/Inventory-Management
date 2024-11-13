@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C// DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="jakarta.faces.facelets"
@@ -7,63 +7,74 @@
                 xmlns:h="jakarta.faces.html"
                 xmlns:f="jakarta.faces.core">
 
+    <!-- Page Title -->
     <ui:define name="title">
         WIS Customer Section. Your Customer username is #{loginController.authenticatedUsername}
     </ui:define>
 
+    <!-- Page Content -->
     <ui:define name="content">
-        WIS Customer Content
 
-        
-        <h:dataTable 
-            styleClass="table table-striped table-hover"
-            value="#{orderManagementWelcomeController.orderManagement.customer}" var="customer">
-            <h:column>
-                <f:facet name="header">Customer ID</f:facet>
-                <h:outputText value="#{customer.id}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">Customer address</f:facet>
-                <h:outputText value="#{customer.address}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">Customer city</f:facet>
-                <h:outputText value="#{customer.city}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">Customer email</f:facet>
-                <h:outputText value="#{customer.email}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">Customer name</f:facet>
-                <h:outputText value="#{customer.name}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">Customer Phone Number</f:facet>
-                <h:outputText value="#{customer.phoneNumber}"/>
-            </h:column>
-            
-            <h:column>
-                <f:facet name="header">Customer Postal Code</f:facet>
-                <h:outputText value="#{customer.postalCode}"/>
-            </h:column>
-            
-           
-          
+        <!-- Customer Information Section -->
+        <h2>WIS Customer Content</h2>
+        <h:dataTable value="#{orderManagementWelcomeController.orderManagement.customer}" var="customer"
+                     styleClass="table table-striped table-hover">
+            <!-- Add your customer data columns here -->
         </h:dataTable>
-        
-        
-        
-        
+
+        <!-- Order Items Section -->
+        <h2>Order Items</h2>
+        <h:dataTable value="#{orderItemCreateController.orderItemsList}" var="orderItem" 
+                     styleClass="table table-striped table-hover">
+
+            <!-- Item ID Column -->
+            <h:column>
+                <f:facet name="header">Item ID</f:facet>
+                <h:outputText value="#{orderItem.id}" />
+            </h:column>
+
+            <!-- Inventory Column -->
+            <h:column>
+                <f:facet name="header">Inventory</f:facet>
+                <h:outputText value="#{orderItem.inventory.name}" />
+            </h:column>
+
+            <!-- Quantity Column -->
+            <h:column>
+                <f:facet name="header">Quantity</f:facet>
+                <h:outputText value="#{orderItem.quantity}" />
+            </h:column>
+
+            <!-- Unit Price Column -->
+            <h:column>
+                <f:facet name="header">Unit Price</f:facet>
+                <h:outputText value="#{orderItem.unitPrice}" />
+            </h:column>
+
+            <!-- Total Price Column -->
+            <h:column>
+                <f:facet name="header">Total Price</f:facet>
+                <h:outputText value="#{orderItem.totalPrice}" />
+            </h:column>
+
+            <!-- Actions Column -->
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:form>
+                    <h:commandButton value="Details" 
+                                     action="#{orderItemCreateController.displayCustomerDetailsPage(orderItem)}" />
+                    <h:commandButton value="Edit" 
+                                     action="#{orderItemCreateController.displayEditCustomerPage(orderItem)}" />
+                    <h:commandButton value="Delete" 
+                                     action="#{orderItemCreateController.displayDeleteCustomerPage(orderItem)}" />
+                </h:form>
+            </h:column>
+
+        </h:dataTable>
+
+        <!-- Create New Order Item Button -->
         <h:form>
-            <ul>
-                <li><h:link outcome="/welcome.xhtml">Home</h:link></li>
-            </ul>
+            <h:commandButton value="Create New Order Item" action="#{orderItemCreateController.goToCreateOrderItemPage}" />
         </h:form>
 
 
