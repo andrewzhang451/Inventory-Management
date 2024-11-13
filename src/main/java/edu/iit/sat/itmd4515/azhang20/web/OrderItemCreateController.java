@@ -18,6 +18,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
 import java.util.logging.Logger;
+import jakarta.faces.context.FacesContext;
 
 /**
  * OrderItemCreateController handles creating new OrderItem instances and
@@ -57,9 +58,31 @@ public class OrderItemCreateController {
     @PostConstruct
     private void postConstruct() {
         LOG.info("Inside OrderItemCreateController.postConstruct()");
-        orderItem = new OrderItem();
-        inventoryList = inventoryService.readAll();
-        loadOrderItems(); // Load the order items for the logged-in customer
+        inventoryList = inventoryService.readAll(); // Load inventory options
+        loadOrderItems(); // Load existing order items
+
+        // Retrieve `orderItemId` from the request parameters
+        String orderItemIdParam = FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .getRequestParameterMap()
+                .get("orderItemId");
+
+        if (orderItemIdParam != null) {
+            orderItemId = Long.valueOf(orderItemIdParam); // Convert parameter to Long
+            orderItem = orderItemService.find(orderItemId); // Find the OrderItem by ID
+
+            if (orderItem != null) {
+                // Pre-fill form fields with existing OrderItem values
+                selectedInventory = orderItem.getInventory();
+                quantity = orderItem.getQuantity();
+                unitPrice = orderItem.getUnitPrice();
+            } else {
+                LOG.warning("No OrderItem found with ID: " + orderItemId);
+                orderItem = new OrderItem(); // Create new instance if ID not found
+            }
+        } else {
+            orderItem = new OrderItem(); // Create new instance if no ID provided
+        }
     }
 
     public void loadOrderItems() {
@@ -76,7 +99,8 @@ public class OrderItemCreateController {
 
     public String displayEditCustomerPage(OrderItem orderItem) {
         LOG.info("Editing OrderItem: " + orderItem);
-        return "/customer/editOrderItem.xhtml?faces-redirect=true";
+        this.orderItemId = orderItem.getId(); // Set the ID of the order item being edited
+        return "/customer/editOrderItem.xhtml?faces-redirect=true&orderItemId=" + orderItemId;
     }
 
     public String displayDeleteCustomerPage(OrderItem orderItem) {
@@ -154,8 +178,83 @@ public class OrderItemCreateController {
         orderItemService.create(orderItem);
         loadOrderItems(); // Reload the order items to update the list
 
+        LOG.info("Customer: " + customer);
+        LOG.info("Selected Inventory: " + selectedInventory);
+        LOG.info("Quantity: " + quantity);
+        LOG.info("Unit Price: " + unitPrice);
+
         LOG.info("OrderItem created successfully: " + orderItem);
         return "/customer/welcome.xhtml?faces-redirect=true";
 
     }
+
+    public String editOrderItem() {
+        LOG.info("Inside OrderItemCreateController.editOrderItem()");
+
+        Customer customer = customerWelcomeController.getCustomer();
+        OrderManagement order = orderManagementWelcomeController.getOrderManagement();
+
+        if (order == null) {
+            order = new OrderManagement();
+            order.setCustomer(customer);
+            orderManagementService.create(order);
+        }
+
+        orderItem.setOrder(order);
+        orderItem.setInventory(selectedInventory);
+        orderItem.setQuantity(quantity);
+        orderItem.setUnitPrice(unitPrice);
+        orderItem.setTotalPrice(quantity * unitPrice);
+
+        orderItemService.create(orderItem);
+        loadOrderItems(); // Reload the order items to update the list
+
+        LOG.info("Customer: " + customer);
+        LOG.info("Selected Inventory: " + selectedInventory);
+        LOG.info("Quantity: " + quantity);
+        LOG.info("Unit Price: " + unitPrice);
+
+        LOG.info("OrderItem created successfully: " + orderItem);
+        return "/customer/welcome.xhtml?faces-redirect=true";
+
+    }
+
+    private Long orderItemId; // Holds the ID of the item being edited
+
+    // Getter and Setter for orderItemId
+    public Long getOrderItemId() {
+        return orderItemId;
+    }
+
+    public void setOrderItemId(Long orderItemId) {
+        this.orderItemId = orderItemId;
+    }
+
+    public String updateOrderItem() {
+        LOG.info("Inside OrderItemCreateController.updateOrderItem()");
+
+        // Ensure the order is retrieved or created
+        Customer customer = customerWelcomeController.getCustomer();
+        OrderManagement order = orderManagementWelcomeController.getOrderManagement();
+
+        // If order is still null, you may need to initialize it here, depending on the logic
+        if (order == null) {
+            order = new OrderManagement();
+            order.setCustomer(customer);
+            orderManagementService.create(order);
+        }
+
+        orderItem.setOrder(order); // Set the order for the OrderItem
+        orderItem.setInventory(selectedInventory);
+        orderItem.setQuantity(quantity);
+        orderItem.setUnitPrice(unitPrice);
+        orderItem.setTotalPrice(quantity * unitPrice);
+
+        orderItemService.update(orderItem); // Update the existing order item in the database
+        loadOrderItems(); // Reload the order items to update the list
+
+        LOG.info("OrderItem updated successfully: " + orderItem);
+        return "/customer/welcome.xhtml?faces-redirect=true";
+    }
+
 }

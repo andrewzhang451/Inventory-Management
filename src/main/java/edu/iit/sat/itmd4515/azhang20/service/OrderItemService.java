@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Named
 @Stateless
-public class OrderItemService extends AbstractService<OrderItem>{
+public class OrderItemService extends AbstractService<OrderItem> {
 
     /**
      *
@@ -25,24 +25,27 @@ public class OrderItemService extends AbstractService<OrderItem>{
     public OrderItemService() {
         super(OrderItem.class);
     }
-    
+
     public List<OrderItem> findByCustomer(Customer customer) {
-    TypedQuery<OrderItem> query = em.createQuery(
-        "SELECT oi FROM OrderItem oi WHERE oi.order.customer = :customer", OrderItem.class
-    );
-    query.setParameter("customer", customer);
-    return query.getResultList();
-}
-    
-    
+        TypedQuery<OrderItem> query = em.createQuery(
+                "SELECT oi FROM OrderItem oi WHERE oi.order.customer = :customer", OrderItem.class
+        );
+        query.setParameter("customer", customer);
+        return query.getResultList();
+    }
+
     /**
      *
      * @return
      */
-    public List<OrderItem> readAll(){
+    public List<OrderItem> readAll() {
         return super.readAll("OrderItem.readAll");
     }
-    
+
+    public OrderItem find(Long id) {
+        return em.find(OrderItem.class, id);
+    }
+
 //        public OrderItem findByUsername(String uname){
 //        return em.createNamedQuery("OrderItem.findByUsername", OrderItem.class).setParameter("uname", uname).getSingleResult();
 //    }

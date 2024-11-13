@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+
+    <cc:interface>
+        <cc:attribute name="formAction" required="true" method-signature="java.lang.String methodName()" />
+        <cc:attribute name="operation" required="true" shortDescription="One of create, read, update, delete" type="java.lang.String" />
+    </cc:interface>
+
+    <cc:implementation>
+        <h:form>
+            <!-- Inventory Selection -->
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Select Inventory: " for="inventory"/>
+                <h:selectOneMenu id="inventory" value="#{orderItemCreateController.selectedInventory}" converter="inventoryConverter">
+                    <f:selectItems value="#{orderItemCreateController.inventoryList}" var="inv" itemValue="#{inv}" itemLabel="#{inv.name}" />
+                </h:selectOneMenu>
+                <h:message for="inventory" errorStyle="color: red"/>
+            </h:panelGroup>
+
+            <!-- Quantity -->
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Quantity: " for="quantity"/>
+                <h:inputText id="quantity" value="#{orderItemCreateController.quantity}" required="true"/>
+                <h:message for="quantity" errorStyle="color: red"/>
+            </h:panelGroup>
+
+            <!-- Unit Price -->
+            <h:panelGroup layout="block">
+                <h:outputLabel value="Unit Price: " for="unitPrice"/>
+                <h:inputText id="unitPrice" value="#{orderItemCreateController.unitPrice}" required="true"/>
+                <h:message for="unitPrice" errorStyle="color: red"/>
+            </h:panelGroup>
+
+            <!-- Buttons based on Operation -->
+            <h:commandButton rendered="#{cc.attrs.operation.equalsIgnoreCase('update')}" value="Edit Order" action="#{cc.attrs.formAction}" />
+            <h:commandButton rendered="#{cc.attrs.operation.equalsIgnoreCase('create')}" value="Create Order" action="#{cc.attrs.formAction}" />
+            <h:commandButton rendered="#{cc.attrs.operation.equalsIgnoreCase('delete')}" value="Delete Order" action="#{cc.attrs.formAction}" />
+        </h:form>
+    </cc:implementation>
+</html>

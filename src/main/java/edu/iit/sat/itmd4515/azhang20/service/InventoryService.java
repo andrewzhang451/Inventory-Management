@@ -35,3 +35,4 @@ public class InventoryService extends AbstractService<Inventory> {
         return em.createNamedQuery("Inventory.findByUsername", Inventory.class).setParameter("uname", uname).getSingleResult();
     }
 }
+

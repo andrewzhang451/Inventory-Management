@@ -5,43 +5,14 @@
                 xmlns:ui="jakarta.faces.facelets"
                 template="../WEB-INF/templates/authNtemplate.xhtml"
                 xmlns:h="jakarta.faces.html"
-                xmlns:f="jakarta.faces.core">
+                xmlns:f="jakarta.faces.core"
+                xmlns:ezcomp="jakarta.faces.composite/ezcomp">
 
-    <!-- Define the page title -->
     <ui:define name="title">
         Order Item Form
     </ui:define>
 
-    <!-- Define the main content -->
     <ui:define name="content">
-        <h:form>
-            <!-- Inventory Selection -->
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Select Inventory: " for="inventory"/>
-                <h:selectOneMenu id="inventory" value="#{orderItemCreateController.selectedInventory}" converter="inventoryConverter">
-                    <f:selectItems value="#{orderItemCreateController.inventoryList}" var="inv" itemValue="#{inv}" itemLabel="#{inv.name}" />
-                </h:selectOneMenu>
-
-                <h:message for="inventory" errorStyle="color: red"/>
-            </h:panelGroup>
-
-            <!-- Quantity -->
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Quantity: " for="quantity"/>
-                <h:inputText id="quantity" value="#{orderItemCreateController.quantity}" required="true"/>
-                <h:message for="quantity" errorStyle="color: red"/>
-            </h:panelGroup>
-
-            <!-- Unit Price -->
-            <h:panelGroup layout="block">
-                <h:outputLabel value="Unit Price: " for="unitPrice"/>
-                <h:inputText id="unitPrice" value="#{orderItemCreateController.unitPrice}" required="true"/>
-                <h:message for="unitPrice" errorStyle="color: red"/>
-            </h:panelGroup>
-
-            <!-- Submit Button -->
-            <h:commandButton value="Create Order Item" action="#{orderItemCreateController.createOrderItem()}" />
-        </h:form>
+        <ezcomp:order operation="create" formAction="#{orderItemCreateController.createOrderItem}"/>
     </ui:define>
-
 </ui:composition>

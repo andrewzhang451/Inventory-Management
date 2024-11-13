@@ -63,8 +63,12 @@
                 <h:form>
                     <h:commandButton value="Details" 
                                      action="#{orderItemCreateController.displayCustomerDetailsPage(orderItem)}" />
+                    
                     <h:commandButton value="Edit" 
-                                     action="#{orderItemCreateController.displayEditCustomerPage(orderItem)}" />
+                                     action="#{orderItemCreateController.displayEditCustomerPage(orderItem)}">
+                        <f:param name="orderItemId" value="#{orderItem.id}" />
+                    </h:commandButton>
+                    
                     <h:commandButton value="Delete" 
                                      action="#{orderItemCreateController.displayDeleteCustomerPage(orderItem)}" />
                 </h:form>
