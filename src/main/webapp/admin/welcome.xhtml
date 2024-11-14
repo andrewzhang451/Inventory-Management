@@ -13,59 +13,59 @@
 
     <ui:define name="content">
         WIS Administrative Content. Welcome back #{loginController.authenticatedUsername} !
-        
+
         <h:dataTable 
             styleClass="table table-striped table-hover"
-            value="#{CustomerService.readAll()}" var="customer">
+            value="#{adminController.customers}" var="customer">
             <h:column>
                 <f:facet name="header">Customer ID</f:facet>
                 <h:outputText value="#{customer.id}"/>
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Customer address</f:facet>
                 <h:outputText value="#{customer.address}"/>
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Customer city</f:facet>
                 <h:outputText value="#{customer.city}"/>
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Customer email</f:facet>
                 <h:outputText value="#{customer.email}"/>
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Customer name</f:facet>
                 <h:outputText value="#{customer.name}"/>
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Customer Phone Number</f:facet>
                 <h:outputText value="#{customer.phoneNumber}"/>
             </h:column>
-            
+
             <h:column>
                 <f:facet name="header">Customer Postal Code</f:facet>
                 <h:outputText value="#{customer.postalCode}"/>
             </h:column>
-            
+
         </h:dataTable>
-        
-                    
-        
-        
-        
-        
-        
-<!--        <h:form>
-            <ul>
-                <li><h:link outcome="/welcome.xhtml">Home</h:link></li>
-            </ul>
-        </h:form>-->
-        
+
+
+
+
+
+
+
+        <!--        <h:form>
+                    <ul>
+                        <li><h:link outcome="/welcome.xhtml">Home</h:link></li>
+                    </ul>
+                </h:form>-->
+
     </ui:define>
 
 </ui:composition>
