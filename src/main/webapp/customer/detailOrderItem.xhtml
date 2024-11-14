@@ -5,16 +5,15 @@
                 xmlns:ui="jakarta.faces.facelets"
                 template="../WEB-INF/templates/authNtemplate.xhtml"
                 xmlns:h="jakarta.faces.html"
-                xmlns:f="jakarta.faces.core">
+                xmlns:f="jakarta.faces.core"
+                xmlns:ezcomp="jakarta.faces.composite/ezcomp">
 
     <ui:define name="title">
         Order Detail
     </ui:define>
 
     <ui:define name="content">
-        <!--  Order Detail form goes here-->
-        
-        
+        <ezcomp:order operation="read" formAction="#{orderItemCreateController.displayCustomerDetailsPage(orderItem)}"/>
     </ui:define>
 
 </ui:composition>
