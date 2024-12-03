@@ -5,11 +5,20 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeAll;
 
-
+/**
+ *
+ * @author AndrewZ
+ */
 public abstract class BaseValidationTest {
 
+    /**
+     *
+     */
     protected static Validator validator;
 
+    /**
+     *
+     */
     @BeforeAll
     public static void setupValidator() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

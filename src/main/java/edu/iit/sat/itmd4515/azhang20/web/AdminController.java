@@ -12,7 +12,7 @@ import jakarta.inject.Named;
 import java.util.List;
 
 /**
- *
+ *this is a lightweight controller that acts as a middleman between front and back-end
  * @author AndrewZ
  */
 @Named
@@ -21,6 +21,10 @@ public class AdminController {
     @EJB
     private CustomerService customerService;
 
+    /**
+     *
+     * @return
+     */
     public List<Customer> getCustomers() {
         return customerService.readAll();
     }

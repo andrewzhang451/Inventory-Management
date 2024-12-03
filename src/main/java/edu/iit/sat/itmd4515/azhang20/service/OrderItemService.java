@@ -26,6 +26,11 @@ public class OrderItemService extends AbstractService<OrderItem> {
         super(OrderItem.class);
     }
 
+    /**
+     *
+     * @param customer
+     * @return
+     */
     public List<OrderItem> findByCustomer(Customer customer) {
         TypedQuery<OrderItem> query = em.createQuery(
                 "SELECT oi FROM OrderItem oi WHERE oi.order.customer = :customer", OrderItem.class
@@ -42,6 +47,11 @@ public class OrderItemService extends AbstractService<OrderItem> {
         return super.readAll("OrderItem.readAll");
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public OrderItem find(Long id) {
         return em.find(OrderItem.class, id);
     }

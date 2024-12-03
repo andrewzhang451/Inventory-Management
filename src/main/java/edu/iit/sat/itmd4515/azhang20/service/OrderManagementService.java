@@ -31,6 +31,11 @@ public class OrderManagementService extends AbstractService<OrderManagement>{
         return super.readAll("OrderManagement.readAll");
     }
     
+    /**
+     *
+     * @param uname
+     * @return
+     */
     public OrderManagement findByUsername(String uname){
         return em.createNamedQuery("OrderManagement.findByUsername", OrderManagement.class).setParameter("uname", uname).getSingleResult();
     }

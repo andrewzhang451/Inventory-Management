@@ -263,4 +263,11 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" + "name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", address=" + address + ", city=" + city + ", postalCode=" + postalCode + ", user=" + user + '}';
+    }
+    
+    
+
 }

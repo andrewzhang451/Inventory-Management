@@ -14,7 +14,7 @@ import jakarta.inject.Named;
 import java.util.logging.Logger;
 
 /**
- *
+ * this is bridge the connection between orderItem and customer. 
  * @author AndrewZ
  */
 @Named
@@ -28,14 +28,25 @@ public class OrderManagementWelcomeController {
     @Inject LoginController loginController;
     @EJB OrderManagementService omSvc;
 
+    /**
+     *
+     * @return
+     */
     public OrderManagement getOrderManagement() {
         return orderManagement;
     }
 
+    /**
+     *
+     * @param orderManagement
+     */
     public void setOrderManagement(OrderManagement orderManagement) {
         this.orderManagement = orderManagement;
     }
 
+    /**
+     *
+     */
     public OrderManagementWelcomeController() {
     }
 

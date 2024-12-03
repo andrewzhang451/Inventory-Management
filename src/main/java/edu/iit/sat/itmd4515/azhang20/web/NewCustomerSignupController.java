@@ -5,31 +5,28 @@
 package edu.iit.sat.itmd4515.azhang20.web;
 
 import edu.iit.sat.itmd4515.azhang20.domain.Customer;
+import edu.iit.sat.itmd4515.azhang20.security.User;
 import edu.iit.sat.itmd4515.azhang20.service.CustomerService;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.logging.Logger;
 
 /**
- * this is the lightweight controller for welcoming customer when they enter the webpage. This lightweight controller acts as a
- * controller that is in-between front end and back-end business logic.
+ *
  * @author AndrewZ
  */
 @Named
 @RequestScoped
-public class CustomerWelcomeController {
+public class NewCustomerSignupController {
 
-    private static final Logger LOG = Logger.getLogger(CustomerWelcomeController.class.getName());
+    private static final Logger LOG = Logger.getLogger(NewCustomerSignupController.class.getName());
 
-        private Customer customer;
+    private Customer customer;
+    @EJB
+    CustomerService customerSvc;
 
-        @Inject LoginController loginController;
-        @EJB CustomerService customerSvc;
-        
-        
     /**
      * Get the value of customer
      *
@@ -48,17 +45,30 @@ public class CustomerWelcomeController {
         this.customer = customer;
     }
 
-    /**
-     *
-     */
-    public CustomerWelcomeController() {
+    public NewCustomerSignupController() {
     }
-    
+
     @PostConstruct
-    private void postConstruct(){
-        LOG.info("Inside CustomerWelcomeController.postConstruct with " + loginController.getAuthenticatedUsername());
-        customer = customerSvc.findByUsername(loginController.getAuthenticatedUsername());
-        LOG.info("Inside CustomerWelcomeController.postConstruct with " + customer.toString() );
+    public void postConstruct() {
+        // Initialize model
+        customer = new Customer();
+
+        // Initialize the associated user model
+        User user = new User();
+        customer.setUser(user);
+
+        // Log customer details (after initialization)
+        LOG.info("Before new customer signup: " + this.customer.toString());
     }
-    
+
+    //action method
+    public String doCustomerSignup() {
+        // create new user
+        customerSvc.newCustomerSignup(customer);
+
+        //send them to login page to sign in
+        //when you do this, make sure it is brand new request
+        return "login.xhtml?faces-redirect=true";
+    }
+
 }

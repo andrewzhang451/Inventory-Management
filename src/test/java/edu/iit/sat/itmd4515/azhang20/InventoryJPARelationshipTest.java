@@ -21,6 +21,9 @@ import org.junit.jupiter.api.Test;
  */
 public class InventoryJPARelationshipTest extends AbstractJPATest {
 
+    /**
+     *
+     */
     @BeforeEach
     public void cleanUpTestData() {
         tx.begin();
@@ -39,6 +42,9 @@ public class InventoryJPARelationshipTest extends AbstractJPATest {
         tx.commit();
     }
     
+    /**
+     *
+     */
     @Test
     public void uniDirectionalTestCase() {
         // Create test data
@@ -77,6 +83,9 @@ public class InventoryJPARelationshipTest extends AbstractJPATest {
          
     }
 
+    /**
+     *
+     */
     @Test
     public void biDirectionalTestCase() {
         // this create Inventory and Customer data :)

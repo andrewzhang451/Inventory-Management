@@ -33,11 +33,19 @@ public class User {
     @NotBlank(message = "Must enter a password")
     private String password;
     
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "User{" + "username=" + username + ", password=" + password + ", groups=" + groups + '}';
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -45,6 +53,11 @@ public class User {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -60,19 +73,35 @@ public class User {
         return Objects.equals(this.username, other.username);
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     */
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    /**
+     *
+     */
     public User() {
     }
     
+    /**
+     *
+     * @param g
+     */
     public void addGroup(Group g){
         this.groups.add(g);
         g.getUsers().add(this);
     }
     
+    /**
+     *
+     * @param g
+     */
     public void removeGroup(Group g){
         this.groups.remove(g);
         g.getUsers().remove(this);

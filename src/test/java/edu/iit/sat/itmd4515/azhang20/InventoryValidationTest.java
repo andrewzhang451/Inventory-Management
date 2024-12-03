@@ -12,13 +12,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 
+ * @author AndrewZ
  */
 public class InventoryValidationTest extends BaseValidationTest {
 
+    /**
+     *
+     */
     @BeforeEach
     public void beforeEach() {
     }
 
+    /**
+     *
+     */
     @Test
     public void validInventoryTest() {
         Inventory inventory = new Inventory("WindowName", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0);
@@ -29,6 +36,9 @@ public class InventoryValidationTest extends BaseValidationTest {
         assertEquals(0, violations.size());
     }
 
+    /**
+     *
+     */
     @Test
     public void invalidBlankNameTest() {
         Inventory inventory = new Inventory("", LocalDate.of(2024, 1, 1), WindowType.FLOAT, 100, 250.0); 
@@ -44,6 +54,9 @@ public class InventoryValidationTest extends BaseValidationTest {
         assertEquals("must not be blank", violations.iterator().next().getMessage());
     }
 
+    /**
+     *
+     */
     @Test
     public void invalidFutureProductionDateTest() {
         Inventory inventory = new Inventory("WindowName", LocalDate.of(2025, 1, 1), WindowType.FLOAT, 100, 250.0);
@@ -59,6 +72,9 @@ public class InventoryValidationTest extends BaseValidationTest {
         assertEquals("must be a date in the past or in the present", violations.iterator().next().getMessage());
     }
 
+    /**
+     *
+     */
     @AfterEach
     public void afterEach() {
     }

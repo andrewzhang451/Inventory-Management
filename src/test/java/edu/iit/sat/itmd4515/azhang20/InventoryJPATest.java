@@ -17,6 +17,9 @@ import org.junit.jupiter.api.Test;
  */
 public class InventoryJPATest extends AbstractJPATest {
 
+    /**
+     *
+     */
     @Test
     public void createTest() {
         //assert that you COULD read such val
@@ -33,11 +36,18 @@ public class InventoryJPATest extends AbstractJPATest {
         assertEquals("WindowName", readBackFromDatabase.getName());
     }
 
+    /**
+     *
+     * @throws SQLException
+     */
     @Test
     public void readTest() throws SQLException {
 
     }
 
+    /**
+     *
+     */
     @Test
     public void updateTest() {
         Inventory inventory = em.createQuery("select i from Inventory i where i.name = 'TEST DATA'", Inventory.class).getSingleResult();
@@ -54,6 +64,9 @@ public class InventoryJPATest extends AbstractJPATest {
         assertEquals(LocalDate.of(2021, 01, 01), readBackFromDatabase.getProductionDate());
     }
 
+    /**
+     *
+     */
     @Test
     public void deleteTest() {
         Inventory inventory = em.createQuery("select i from Inventory i where i.name = 'TEST DATA'", Inventory.class).getSingleResult();

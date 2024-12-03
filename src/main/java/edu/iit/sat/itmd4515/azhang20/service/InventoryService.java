@@ -31,6 +31,11 @@ public class InventoryService extends AbstractService<Inventory> {
         return super.readAll("Inventory.readAll");
     }
 
+    /**
+     *
+     * @param uname
+     * @return
+     */
     public Inventory findByUsername(String uname) {
         return em.createNamedQuery("Inventory.findByUsername", Inventory.class).setParameter("uname", uname).getSingleResult();
     }

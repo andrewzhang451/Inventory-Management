@@ -23,12 +23,19 @@ public class ShippingController {
     @Inject
     private ShippingService shippingService;
 
+    /**
+     * manages data that involves shipping information
+     */
     @PostConstruct
     public void init() {
         LOG.info("Initializing ShippingController and loading all shipments.");
         this.allShipments = shippingService.findAll(); // Use findAll instead of readAll
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Shipping> getAllShipments() {
         return allShipments;
     }

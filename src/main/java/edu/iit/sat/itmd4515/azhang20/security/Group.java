@@ -25,6 +25,10 @@ public class Group {
     @Id
     private String groupName;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -32,11 +36,20 @@ public class Group {
         return hash;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Group{" + "groupName=" + groupName + ", groupDesc=" + groupDesc + '}';
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -52,10 +65,17 @@ public class Group {
         return Objects.equals(this.groupName, other.groupName);
     }
 
+    /**
+     *
+     */
     public Group() {
     }
 
-    
+    /**
+     *
+     * @param groupName
+     * @param groupDesc
+     */
     public Group(String groupName, String groupDesc) {
         this.groupName = groupName;
         this.groupDesc = groupDesc;

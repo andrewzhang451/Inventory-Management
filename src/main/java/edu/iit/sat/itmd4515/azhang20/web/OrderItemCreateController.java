@@ -47,6 +47,9 @@ public class OrderItemCreateController {
     @EJB
     OrderManagementService orderManagementService;
 
+    /**
+     *Default no-args constructor for OrderItemCreateController
+     */
     public OrderItemCreateController() {
     }
 
@@ -85,6 +88,9 @@ public class OrderItemCreateController {
         }
     }
 
+    /**
+     *
+     */
     public void loadOrderItems() {
         Customer customer = customerWelcomeController.getCustomer();
         if (customer != null) {
@@ -92,17 +98,32 @@ public class OrderItemCreateController {
         }
     }
 
+    /**
+     *
+     * @param orderItem
+     * @return
+     */
     public String displayCustomerDetailsPage(OrderItem orderItem) {
         LOG.info("Displaying details for OrderItem: " + orderItem);
         return "/customer/detailOrderItem.xhtml?faces-redirect=true";
     }
 
+    /**
+     *
+     * @param orderItem
+     * @return
+     */
     public String displayEditCustomerPage(OrderItem orderItem) {
         LOG.info("Editing OrderItem: " + orderItem);
         this.orderItemId = orderItem.getId(); // Set the ID of the order item being edited
         return "/customer/editOrderItem.xhtml?faces-redirect=true&orderItemId=" + orderItemId;
     }
 
+    /**
+     *
+     * @param orderItem
+     * @return
+     */
     public String displayDeleteCustomerPage(OrderItem orderItem) {
         LOG.info("Deleting OrderItem: " + orderItem);
         // Logic to delete the specific order item
@@ -111,52 +132,101 @@ public class OrderItemCreateController {
         return "/customer/welcome.xhtml?faces-redirect=true"; // Adjust this path as needed
     }
 
+    /**
+     *
+     * @return
+     */
     public String goToCreateOrderItemPage() {
         LOG.info("Navigating to createOrderItem page");
         return "/customer/createOrderItem.xhtml?faces-redirect=true";
     }
 
     // Getters and Setters
+
+    /**
+     *
+     * @return
+     */
     public List<OrderItem> getOrderItemsList() {
         return orderItemsList;
     }
 
+    /**
+     *
+     * @return
+     */
     public OrderItem getOrderItem() {
         return orderItem;
     }
 
+    /**
+     *
+     * @param orderItem
+     */
     public void setOrderItem(OrderItem orderItem) {
         this.orderItem = orderItem;
     }
 
+    /**
+     *
+     * @return
+     */
     public Inventory getSelectedInventory() {
         return selectedInventory;
     }
 
+    /**
+     *
+     * @param selectedInventory
+     */
     public void setSelectedInventory(Inventory selectedInventory) {
         this.selectedInventory = selectedInventory;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     *
+     * @param quantity
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getUnitPrice() {
         return unitPrice;
     }
 
+    /**
+     *
+     * @param unitPrice
+     */
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Inventory> getInventoryList() {
         return inventoryList;
     }
 
+    /**
+     *
+     * @return
+     */
     public String createOrderItem() {
         LOG.info("Inside OrderItemCreateController.createOrderItem()");
 
@@ -188,6 +258,10 @@ public class OrderItemCreateController {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String editOrderItem() {
         LOG.info("Inside OrderItemCreateController.editOrderItem()");
 
@@ -222,14 +296,27 @@ public class OrderItemCreateController {
     private Long orderItemId; // Holds the ID of the item being edited
 
     // Getter and Setter for orderItemId
+
+    /**
+     *
+     * @return
+     */
     public Long getOrderItemId() {
         return orderItemId;
     }
 
+    /**
+     *
+     * @param orderItemId
+     */
     public void setOrderItemId(Long orderItemId) {
         this.orderItemId = orderItemId;
     }
 
+    /**
+     *
+     * @return
+     */
     public String updateOrderItem() {
         LOG.info("Inside OrderItemCreateController.updateOrderItem()");
 

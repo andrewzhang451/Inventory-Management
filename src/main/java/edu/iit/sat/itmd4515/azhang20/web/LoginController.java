@@ -36,38 +36,73 @@ public class LoginController {
     private User user;    
     
     // Constructor to initialize 'user'
+
+    /**
+     *
+     */
     public LoginController() {
         this.user = new User(); // Initialize 'user' properly
     }
 
     // Getter for 'user' to allow access in login.xhtml
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
     
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }
     
     //helper method
+
+    /**
+     *
+     * @return
+     */
     public String getAuthenticatedUsername(){
         return securityContext.getCallerPrincipal().getName();
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isCustomer(){
         return securityContext.isCallerInRole("CUSTOMER_ROLE");
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isSeller(){
         return securityContext.isCallerInRole("SELLER_ROLE");
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isAdmin(){
         return securityContext.isCallerInRole("ADMIN_ROLE");
     }
     
     
     // Login method
+
+    /**
+     *
+     * @return
+     */
     public String doLogin(){
         
         HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
@@ -96,6 +131,11 @@ public class LoginController {
     }
 
     // Logout method
+
+    /**
+     *
+     * @return
+     */
     public String doLogout(){
         
         LOG.info("LoginController.doLogout()");

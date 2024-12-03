@@ -12,10 +12,17 @@ import java.util.List;
 @Stateless
 public class ShippingService extends AbstractService<Shipping> {
 
+    /**
+     *
+     */
     public ShippingService() {
         super(Shipping.class);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Shipping> findAll() {
     return em.createNamedQuery("Shipping.readAll", Shipping.class).getResultList();
 }

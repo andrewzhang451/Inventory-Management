@@ -23,15 +23,29 @@ import org.junit.jupiter.api.BeforeEach;
  */
 public class AbstractJPATest {
     private static EntityManagerFactory emf;
+
+    /**
+     *
+     */
     protected EntityManager em;
+
+    /**
+     *
+     */
     protected EntityTransaction tx;
 
+    /**
+     *
+     */
     @BeforeAll
     public static void beforeAll() {
         emf = Persistence.createEntityManagerFactory("itmd4515testPU");
 
     }
 
+    /**
+     *
+     */
     @BeforeEach
     public void beforeEach() {
         //before each testcase, we create standard test data to work with
@@ -45,8 +59,9 @@ public class AbstractJPATest {
         System.out.println("beforeEach with inventory:" + inventory.toString());
     }
 
-    
-
+    /**
+     *
+     */
     @AfterEach
     public void afterEach() {
         try {
@@ -63,6 +78,9 @@ public class AbstractJPATest {
         }
     }
 
+    /**
+     *
+     */
     @AfterAll
     public static void afterAll() {
 

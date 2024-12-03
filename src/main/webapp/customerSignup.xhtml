@@ -6,43 +6,58 @@
                 xmlns:h="jakarta.faces.html">
 
     <ui:define name="title">
-        Login Page
+        Customer Signup
     </ui:define>
 
     <ui:define name="content">
-        Login Page
-        
-        <h:form>
+        Create New Account
 
-            
+        <h:form>
+            <p>
+                <h:outputLabel value="Customer Name: " for="customerName"/>
+                <h:inputText id="customerName"
+                             styleClass="form-control"
+                             value="#{newCustomerSignupController.customer.name}" />
+                <h:message for="customerName" errorStyle="color: red"/>
+
+            </p> 
+            <h:outputLabel value="Customer Email: " for="customerEmail"/>
+            <h:inputText id="customerEmail"
+                         styleClass="form-control"
+                         value="#{newCustomerSignupController.customer.email}" />
+            <h:message for="customerEmail" errorStyle="color: red"/>
+
+
+
+
+
+
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="UserName: " for="userName"/>
                     <h:inputText binding="#{uname}" id="userName"
                                  styleClass="#{uname.valid ? 'form-control' : 'form-control is-invalid'}"
-                                 value="#{loginController.user.username}"/> 
+                                 value="#{newCustomerSignupController.customer.user.username}"/> 
                     <h:message for="userName" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
-            
+
             <p>
                 <h:panelGroup layout="block">
                     <h:outputLabel value="Password: " for="Password"/>
                     <h:inputSecret binding="#{passwd}" id="Password"
                                    styleClass="#{passwd.valid ? 'form-control' : 'form-control is-invalid'}"
-                                   value="#{loginController.user.password}"/> 
+                                   value="#{newCustomerSignupController.customer.user.password}"/> 
                     <h:message for="Password" errorStyle="color: red"/>
                 </h:panelGroup>
             </p>
-            
-            
-            
-            <h:commandButton value="Login" action="#{loginController.doLogin()}"/>
-            
+
+
+
+            <h:commandButton value="Login" action="#{newCustomerSignupController.doCustomerSignup()}"/>
+
         </h:form>
-        
-        <h:link outcome="customerSignup.xhtml" value="Don't have account? Sign up here!" /> 
-        
+
     </ui:define>
 
 </ui:composition>

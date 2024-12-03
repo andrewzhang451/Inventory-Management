@@ -15,10 +15,17 @@ import java.util.List;
 @Stateless
 public class UserService extends AbstractService<User> {
 
+    /**
+     *
+     */
     public UserService() {
         super(User.class);
     }
     
+    /**
+     *
+     * @return
+     */
     public List<User> readAll(){
         return super.readAll("User.findAll");
     }

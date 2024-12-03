@@ -10,18 +10,27 @@ import jakarta.faces.event.PhaseListener;
 import java.util.logging.Logger;
 
 /**
- *
+ * this is for the developers to keep track of the JSF flow cycle. It shows devs where the log info is starting and where it ends. 
+ * this also help devs debug any issues related to the flow cycle.
  * @author AndrewZ
  */
 public class JSFPhaseListener implements PhaseListener {
 
     private static final Logger LOG = Logger.getLogger(JSFPhaseListener.class.getName());
     
+    /**
+     *
+     * @return
+     */
     @Override
     public PhaseId getPhaseId() {
         return PhaseId.ANY_PHASE;
     }    
 
+    /**
+     *
+     * @param event
+     */
     @Override
     public void beforePhase(PhaseEvent event) {
         
@@ -32,6 +41,10 @@ public class JSFPhaseListener implements PhaseListener {
         LOG.info("Before JSF Phase ====================================>" + event.getPhaseId());
     }
 
+    /**
+     *
+     * @param event
+     */
     @Override
     public void afterPhase(PhaseEvent event) {
         LOG.info("After JSF Phase ====================================>" + event.getPhaseId());
