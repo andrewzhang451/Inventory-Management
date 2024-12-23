@@ -42,8 +42,7 @@ This application truly served as the foundation for many of the future works i'l
 2). Test Case User and Password combinations:
 <img width="583" alt="image" src="https://github.com/user-attachments/assets/85f3cc39-a722-407f-8bd9-59cbe82c5c2b">
 
-3). The difficulty I had with this project was debugging a lot of my syntax errors that cause me to pause VERY frequently with every testing. I did learn a lot about 
-security authenitcation. The going back and forth between some of the files does feel a bit frustrating but it helps me understand why each of the step is important. 
+
 
 
 
